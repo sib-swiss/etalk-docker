@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "Edit-Login required"
+# (Following line optional)
+AuthBasicProvider file
+AuthUserFile /var/vhosts/vital-it.ch/etalk/conf/htpasswd/htpasswd_edit.txt
+Require valid-user
