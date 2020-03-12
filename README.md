@@ -53,7 +53,7 @@ There is currently no built-in deployment procedure.
 
 ## Authors
 
-* *DH+, SIB group*
+*[DH+](https://digitalhumanitiesplus.sib.swiss/#/), SIB group*
 
 ## License
 
