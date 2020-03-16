@@ -15,7 +15,7 @@ To install the software, all you need a Docker client on your desktop (windows, 
 
 ### FIRST STEP : install the Docker image and run the eTalk virtual machine (VM)
 
-1. Download or clone this [repository](https://gitlab.isb-sib.ch/etalk-group/etalk-docker)
+1. Download or clone this [repository](https://github.com/cclivaz/etalk-docker)
 
 2. Open a terminal in linux or open the "docker quick start terminal" in Windows or MacOSX (that comes along with the installation).
 
