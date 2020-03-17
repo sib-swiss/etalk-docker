@@ -6,6 +6,8 @@ The first version of the eTalks code has been developed in 2012-2015 by Frédér
 
 This new version of the code has been developed by Martial Sankar and Claire Clivaz, SIB Swiss Institute of Bioinformatics, 2016-2019, https://github.com/cclivaz/etalk-docker. A course to build your own eTalk is available in the DARIAH platform #dariahTeach (teach.dariah.eu), in the course on Multimodal Literacies: https://teach.dariah.eu/course/view.php?id=24&section=3 
 
+License: read the summary below.
+
 Clivaz, Claire, Cécile Pache, Marion Rivoal and Martial Sankar, “Multimodal Literacies and Academic Publishing: the eTalks”, Information Services & Use 35/4 (2015), p. 251-258, https://content.iospress.com/articles/information-services-and-use/isu781
 
 Clivaz, Claire, Marion Rivoal and Martial Sankar, “A New Plateform for Editing Digital Multimedia: The eTalks”, in New Avenues for Electronic Publishing in the Age of Infinite Collections and Citizen Science: Scale, Openness and Trust, Birgit Schmidt and Milena Dobreva (eds.), IOS Press, 2015, p. 156-159, http://ebooks.iospress.nl/publication/40894
