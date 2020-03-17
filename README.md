@@ -17,6 +17,9 @@ Clivaz, Claire, Marion Rivoal and Martial Sankar, “A New Plateform for Editing
 
 This eTalk setup is suitable for research and education purpose. It permits to use and test the eTalk application on the user's own plateform. It uses the docker-compose tool to set-up the application services (etalk php/apache, mysql, phpmyadmin).
 
+Guidelines for Unix users: https://teach.dariah.eu/mod/lesson/view.php?id=152&pageid=123
+Guidelines for non Unix users: https://teach.dariah.eu/mod/lesson/view.php?id=152&pageid=124
+
 ## Installing
 
 ### Prerequisites
