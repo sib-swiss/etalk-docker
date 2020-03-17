@@ -8,11 +8,6 @@ This new version of the code has been developed by Martial Sankar and Claire Cli
 
 License: read the summary below.
 
-Clivaz, Claire, Cécile Pache, Marion Rivoal and Martial Sankar, “Multimodal Literacies and Academic Publishing: the eTalks”, Information Services & Use 35/4 (2015), p. 251-258, https://content.iospress.com/articles/information-services-and-use/isu781
-
-Clivaz, Claire, Marion Rivoal and Martial Sankar, “A New Plateform for Editing Digital Multimedia: The eTalks”, in New Avenues for Electronic Publishing in the Age of Infinite Collections and Citizen Science: Scale, Openness and Trust, Birgit Schmidt and Milena Dobreva (eds.), IOS Press, 2015, p. 156-159, http://ebooks.iospress.nl/publication/40894
-
-
 ## Getting Started
 
 This eTalk setup is suitable for research and education purpose. It permits to use and test the eTalk application on the user's own plateform. It uses the docker-compose tool to set-up the application services (etalk php/apache, mysql, phpmyadmin).
