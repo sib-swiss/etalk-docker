@@ -1,6 +1,4 @@
-                   See the License summary in https://github.com/sib-swiss/etalk-docker/blob/master/README.md
-                   
-                   GNU GENERAL PUBLIC LICENSE
+                      GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
