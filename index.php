@@ -190,6 +190,8 @@
 		// -- ONLY WHEN THE ARRAY IS NOT EMPTY --
     }
     else {
+		/* LIST ======================================================== */
+
     	/*require 'main.html';*/
     	echo '<header id="top">';
     		echo '<h1>eTalk</h1><h2>Open-source online talks</h2>';

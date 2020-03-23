@@ -56,6 +56,8 @@ function db_o() {
 function db_s($table, $refs=array(), $sortParams=array()) {
 	$mysqli = db_o();																											// Ouvre une connexion
 	$sql = 'SELECT * FROM '.$table.db_w($refs);
+
+	console_log2('db_s $sql = ' . $sql );
 	// Sort parameters ______________________________________________________________________
 	if (count($sortParams)>0) {
 		$sort = array();
@@ -76,7 +78,7 @@ function db_w($refs) {
 	$str = '';
 	if (count($refs)>0) {
 		$where = array();
-		foreach ($refs as $key => $value) {
+		foreach ($refs as $key => $value) {	
 			if (strstr($key, '%') !== false) {
 				$proper_key = str_replace('%','',$key);
 				$str_val = ($value===null)?'null':'"'.db_escape(str_replace($proper_key,$value,$key)).'"';
@@ -261,5 +263,15 @@ function db_close($link = null) {
 	if ($link !== false) {
 		$link->close();
 	}
+}
+
+
+# Helper for console log
+function console_log2($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
 }
 ?>
