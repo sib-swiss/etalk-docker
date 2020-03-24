@@ -155,10 +155,8 @@
     console_log('$_REQUEST:' . $_POST);
     console_log('search:' . $_POST['search']);
     if (isset($_POST['submit-search']) && $_POST['search'] != '') {
-        $r_t = db_s('talks', array('%title' => '%' . $_POST['search'] . '%'), array('title' => 'ASC'));
+        $r_t = search_term($_POST['search']);
         $count = db_count($r_t);
-        console_log('$count ='.$count);
-        //$count = mysql_num_rows($r_t);
         if ($count > 0) {
             echo '<h3>There are '.$count.' result(s) :</h3>';
         } else {
@@ -168,11 +166,11 @@
         $r_t = db_s('talks', array(), array('title' => 'ASC'));
         echo '<h2>All results :</h3>';
     }
-
         while ($t = db_fetch($r_t)) {
             $imagefile = 'tmp/'.get_main_image($t['dir']);
             console_log('$imagefile:' . $imagefile);
-?>                        
+?>
+
                         <article id="post-<?= $t['dir'] ?>"
                         class="post-<?= $t['dir'] ?> ppost type-post status-publish format-standard has-post-thumbnail hentry category-web feed-item">
 
@@ -189,39 +187,30 @@
                                 <div class="feed-content ">
                                     <a href="index.php?dir=<?= $t['dir'] ?>" target="_blank"
                                         rel="noopener noreferrer">
-
                                         <h2><?= $t['title'] ?></h2>
                                     </a>
-    
-                                    <div class="post-meta">
-    
+                                    <div class="post-meta">    
                                         <ul>
                                             <li><?= $t['author'] ?></li>
                                             <li><a href="index.php?dir=<?= $t['dir'] ?>">eTalk</a></li>
                                             <!-- datetime('h:i', $t['date'])  -->
                                             <li><?= datetime('F d, Y', $t['date']) ?></li>
-                                        </ul>
-    
+                                        </ul>    
                                         <div class="clearfix"></div>
-                                    </div>
-    
+                                    </div>   
                                     <div class="feed-excerpt">
-                                        <p>
-    
-                                        </p>
-    
                                         <a class="read-more button"
                                             href="index.php?dir=<?= $t['dir'] ?>" target="_blank"
                                             rel="noopener noreferrer">Read eTalk</a>
-    
-    
+       
                                         <div class="clearfix"></div>
                                     </div> <!-- feed excerpt -->
     
                                 </div> <!-- feed content -->
                             </div>
                         </div>
-                    </article>                        
+                    </article>
+
 <?php
                 }
 			    echo '</nav>';
@@ -235,12 +224,9 @@
         <div class="footer-wrapper">
             <div class="row">
                 <div class="medium-6 columns small-text-center medium-text-left">
-
                     <h6>DH+ group, SIB, Lausanne</h6>
-
                 </div>
                 <div class="medium-6 columns">
-
                     <!-- footer menu -->
                     <div class="footer-menu">
                         <ul id="menu-footer-menu" class="footer-menu">
@@ -252,7 +238,6 @@
                                     href="/contact/">Contact</a></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div> <!-- footer-wrapper -->
@@ -307,4 +292,19 @@ function get_main_image($dir) {
     $file = $t['file'];
     return str_replace($dir.'/','',$file);
 }
+
+// Search in term in etalk metadata
+function search_term($term) {
+    $mysqli = db_o();
+    $sql = "select * from talks t"
+    . " where title like '%" . $term . "%'"
+    . " or author like '%" . $term . "%'"
+    . " or exists (select 1 from sounds where sounds.dir = t.dir and sounds.text like '%" . $term . "%')"
+    . " order by date desc";
+    console_log2('search $sql = ' . $sql );
+    if(!$result = $mysqli->query($sql)){
+        dieWithError($mysqli->errno, $mysqli->error, $sql);
+    }
+   return $result;	
+}        
 ?>
