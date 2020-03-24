@@ -128,14 +128,54 @@
                             <li>
                                 <a href="">
                                     <img width="100%" height="50%"
-                                        src="/image/EtalksCover2020.jpg"
+                                        src="/image/Carrouselimage1.jpg"
                                         class="attachment-single-page wp-post-image" alt="100H" /></a>
                                 <div class="orbit-caption" position="relative">
                                     <a href=#bp>
-                                        <h4>eTalks in Digital Humanities</h4>
+                                        <h4>MARK16 eTalks</h4>
                                     </a>
-                                    <h5 style="color: white; font-size: 1em">SIB|Swiss Institute of Bioinformatics of
-                                        Lausanne, 2019</h5>
+                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img width="100%" height="50%"
+                                        src="/image/Carrouselimage2.jpg"
+                                        class="attachment-single-page wp-post-image" alt="100H" /></a>
+                                <div class="orbit-caption" position="relative">
+                                    <a href=#bp>
+                                        <h4>MARK16 eTalks</h4>
+                                    </a>
+                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img width="100%" height="50%"
+                                        src="/image/Carrouselimage3.png"
+                                        class="attachment-single-page wp-post-image" alt="100H" /></a>
+                                <div class="orbit-caption" position="relative">
+                                    <a href=#bp>
+                                        <h4>MARK16 eTalks</h4>
+                                    </a>
+                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
+                                </div>
+                             </li>
+                            <li>
+                                <a href="">
+                                    <img width="100%" height="50%"
+                                        src="/image/imageunique.jpg"
+                                        class="attachment-single-page wp-post-image" alt="100H" />
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    </a>
+                                <div class="orbit-caption" position="relative">
+                                    <a href=#bp>
+                                        <h4>MARK16 eTalks</h4>
+                                    </a>
+                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
                                 </div>
                             </li>
                         </ul>
@@ -157,8 +197,10 @@
     if (isset($_POST['submit-search']) && $_POST['search'] != '') {
         $r_t = search_term($_POST['search']);
         $count = db_count($r_t);
-        if ($count > 0) {
+        if ($count > 1) {
             echo '<h3>There are '.$count.' result(s) :</h3>';
+        } else if ($count == 1) {
+            echo '<h3>There is 1 result :</h3>';
         } else {
             echo '<h3>There is no result.</h3>';
         }
