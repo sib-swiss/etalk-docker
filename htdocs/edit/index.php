@@ -298,7 +298,7 @@
 				echo '<br/>';
 				printTextInput('Auteur', 'author', $talk['author'], 50, 255);
 				echo '<br/>';
-				printTextInput('Nakala ID', 'external_id', $talk['external_id'], 50, 255);
+				printTextInput('Metadata', 'external_id', $talk['external_id'], 50, 255);
 			echo '</div>';
 		}
 		echo '<div style="clear:both"></div><br/><br/><label>Outils :</label>';

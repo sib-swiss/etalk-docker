@@ -207,7 +207,7 @@
                                     </div>
                                     <div class="post-meta">    
                                         <ul>
-                                            <li>Nakala ID : <?= $t['external_id'] ?></li>
+                                            <li>Metadata : <?= $t['external_id'] ?></li>
                                         </ul>    
                                         <div class="clearfix"></div>
                                     </div>
