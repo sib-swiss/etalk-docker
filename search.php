@@ -11,8 +11,8 @@
     <meta name="robots" content="noindex, nofollow">
     <title></title>
 
-    <link rel='stylesheet' id='foundation-css-css' href='/s/sitecss/foundation.css' type='text/css' media='' />
-    <link rel='stylesheet' id='main-style-css' href='/s/sitecss/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='foundation-css-css' href='s/sitecss/foundation.css' type='text/css' media='' />
+    <link rel='stylesheet' id='main-style-css' href='s/sitecss/style.css' type='text/css' media='all' />
 
     <link rel='stylesheet' id='redux-google-fonts-css'
         href='https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400&#038;subset=latin&#038;ver=1419502366'
@@ -20,13 +20,13 @@
 
         <!--
             -->
-    <link rel='stylesheet' id='basics' href='/css/style.min_new.css'
+    <link rel='stylesheet' id='basics' href='css/style.min_new.css'
         type='text/css' media='all' />
 
-    <script type='text/javascript' src='/js/sitejs/wp-includes/js/jquery/jquery.js'></script>
-    <script type='text/javascript' src='/js/sitejs/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='js/sitejs/wp-includes/js/jquery/jquery.js'></script>
+    <script type='text/javascript' src='js/sitejs/wp-includes/js/jquery/jquery-migrate.min.js'></script>
     <script type='text/javascript'
-        src='/js/sitejs/wp-content/themes/miomio/js/vendor/modernizr.js?ver=3.9.2'></script>
+        src='js/sitejs/wp-content/themes/miomio/js/vendor/modernizr.js?ver=3.9.2'></script>
 
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://manoolia.com/miomio/xmlrpc.php?rsd" />
     <link rel="wlwmanifest" type="application/wlwmanifest+xml"
@@ -104,15 +104,15 @@
                     <ul id="menu-main-manu" class="right">
                         <li id="menu-item-5"
                             class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active menu-item-5 active">
-                            <a href="/search.php">Home</a></li>
+                            <a href="search.php">Home</a></li>
                         <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35"><a
-                                href="/introduction/">Introduction</a></li>
+                                href="introduction/">Introduction</a></li>
                         <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77"><a
-                                href="/mode-demploi/">How does it work?</a></li>
+                                href="mode-demploi/">How does it work?</a></li>
                         <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77"><a
-                                href="/mode-demploifr/">Mode d'emploi</a></li>
+                                href="mode-demploifr/">Mode d'emploi</a></li>
                         <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51"><a
-                                href="/contact/">Contact us</a></li>
+                                href="contact/">Contact us</a></li>
                     </ul>
                 </div>
             </nav>
@@ -128,43 +128,7 @@
                             <li>
                                 <a href="">
                                     <img width="100%" height="50%"
-                                        src="/image/Carrouselimage1.jpg"
-                                        class="attachment-single-page wp-post-image" alt="100H" /></a>
-                                <div class="orbit-caption" position="relative">
-                                    <a href=#bp>
-                                        <h4>MARK16 eTalks</h4>
-                                    </a>
-                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img width="100%" height="50%"
-                                        src="/image/Carrouselimage2.jpg"
-                                        class="attachment-single-page wp-post-image" alt="100H" /></a>
-                                <div class="orbit-caption" position="relative">
-                                    <a href=#bp>
-                                        <h4>MARK16 eTalks</h4>
-                                    </a>
-                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img width="100%" height="50%"
-                                        src="/image/Carrouselimage3.png"
-                                        class="attachment-single-page wp-post-image" alt="100H" /></a>
-                                <div class="orbit-caption" position="relative">
-                                    <a href=#bp>
-                                        <h4>MARK16 eTalks</h4>
-                                    </a>
-                                    <h5 style="color: white; font-size: 1em">SNSF project 2018-2023</h5>
-                                </div>
-                             </li>
-                            <li>
-                                <a href="">
-                                    <img width="100%" height="50%"
-                                        src="/image/imageunique.jpg"
+                                        src="image/imageunique.jpg"
                                         class="attachment-single-page wp-post-image" alt="100H" />
                                     <br/>
                                     <br/>
@@ -274,10 +238,10 @@
                         <ul id="menu-footer-menu" class="footer-menu">
                             <li id="menu-item-103"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-103"><a
-                                    href="/about/">About</a></li>
+                                    href="about/">About</a></li>
                             <li id="menu-item-104"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104"><a
-                                    href="/contact/">Contact</a></li>
+                                    href="contact/">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -287,16 +251,16 @@
 
     <!-- script for contact form -->
     <script type='text/javascript'
-        src='/js/sitejs/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+        src='js/sitejs/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
         var _wpcf7 = { "loaderUrl": "https:\/\/manoolia.com\/miomio\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif", "sending": "Sending ..." };
     /* ]]> */
     </script>
     <script type='text/javascript'
-        src='/js/sitejs/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.9.3'></script>
-    <script type='text/javascript' src='/js/sitejs/wp-content/themes/miomio/js/foundation.min.js'></script>
-    <script type='text/javascript' src='/js/sitejs//wp-content/themes/miomio/js/main.js'></script>
+        src='js/sitejs/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.9.3'></script>
+    <script type='text/javascript' src='js/sitejs/wp-content/themes/miomio/js/foundation.min.js'></script>
+    <script type='text/javascript' src='js/sitejs//wp-content/themes/miomio/js/main.js'></script>
 
     <script>
         jQuery(document).ready(function ($) {
@@ -335,7 +299,7 @@ function get_main_image($dir) {
     return str_replace($dir.'/','',$file);
 }
 
-// Search in term in etalk metadata
+// Search term in etalk metadata
 function search_term($term) {
     $mysqli = db_o();
     $sql = "select * from talks t"

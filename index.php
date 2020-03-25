@@ -28,10 +28,10 @@
 	}
 
 	echo '<!DOCTYPE HTML><html><head><title>'.PAGE_TITLE.'</title>';
-		echo '<link rel="stylesheet" type="text/css" media="screen" href="/s/screen.css" />';
-		echo '<script type="text/javascript" src="/js/jquery.min.js"></script>';
-		echo '<script type="text/javascript" src="/js/jquery.color.min.js"></script>';
-		echo '<script type="text/javascript" src="/js/jquery.animate-shadow-min.js"></script>';
+		echo '<link rel="stylesheet" type="text/css" media="screen" href="s/screen.css" />';
+		echo '<script type="text/javascript" src="js/jquery.min.js"></script>';
+		echo '<script type="text/javascript" src="js/jquery.color.min.js"></script>';
+		echo '<script type="text/javascript" src="js/jquery.animate-shadow-min.js"></script>';
 		echo '<link rel="shortcut icon" type="image/ico" href="https://www.sib.swiss/templates/sib/favicon.ico">';
 	echo '</head><body class="viewer'.($viewMode?' paused':'').'">';
 	
@@ -40,17 +40,17 @@
     if ($viewMode) {
 		/* THIS PART IS DUPLICATED FOR NOTHING... ALREADY DEFINED BEFORE THE TEST.
 		echo '<!DOCTYPE HTML><html><head><title>'.PAGE_TITLE.'</title>';
-		echo '<link rel="stylesheet" type="text/css" media="screen" href="/s/screen.css" />';
-		echo '<script type="text/javascript" src="/js/jquery.min.js"></script>';
-		echo '<script type="text/javascript" src="/js/jquery.color.min.js"></script>';
-		echo '<script type="text/javascript" src="/js/jquery.animate-shadow-min.js"></script>';
+		echo '<link rel="stylesheet" type="text/css" media="screen" href="s/screen.css" />';
+		echo '<script type="text/javascript" src="js/jquery.min.js"></script>';
+		echo '<script type="text/javascript" src="js/jquery.color.min.js"></script>';
+		echo '<script type="text/javascript" src="js/jquery.animate-shadow-min.js"></script>';
 		echo '<link rel="shortcut icon" type="image/ico" href="https://www.isb-sib.ch/templates/sib/images/favicon.ico">';
 		echo '</head><body class="viewer'.($viewMode?' paused':'').'">'; */
 
 
 	      echo '<header id="top">';
 	    	if (!isset($_REQUEST['embed'])) {
-		    	echo '<nav><img src="/i/back.png" id="bBack" alt="Back" class="btn" title="Retour à l’accueil" /></nav>';
+		    	echo '<nav><img src="i/back.png" id="bBack" alt="Back" class="btn" title="Retour à l’accueil" /></nav>';
 		    }
 
 
@@ -58,15 +58,15 @@
 #	    	echo '<h1>'.$talk['title'].'</h1>';
 #	    	echo '<h2>'.$talk['author'].' &mdash; '.implode('.', array_reverse(explode('-', $talk['date']))).'</h2>';
 	    	echo '<nav id="controls">';
-	    		echo '<img src="/i/loading.gif" id="loading" class="btn" alt="" /> ';
-				echo '<img src="/i/share.png" id="bShare" class="btn" alt="Share" title="Partager / Intégrer" />';
-				echo '<img src="/i/audio_mute.png" id="bMute" class="btn" alt="Mute" title="Activer/Couper le son" />';
-				echo '<img src="/i/mode_full.png" id="bMode" class="btn" alt="Transcript" title="Afficher/Masquer le transcript" />';
-				echo '<img src="/i/prev.png" id="bPrev" class="btn" alt="◀︎◀︎" title="Précédent" />';
-				echo '<img src="/i/play.png" id="bPlay" class="btn" alt="▶︎" title="Play" />';
-				echo '<img src="/i/pause.png" id="bPause" class="btn" alt="Pause" title="Pause" />';
-				echo '<img src="/i/stop.png" id="bStop" class="btn" alt="◼︎" title="Stop" />';
-				echo '<img src="/i/ffw.png" id="bNext" class="btn" alt="▶︎▶︎" title="Suivant" />';
+	    		echo '<img src="i/loading.gif" id="loading" class="btn" alt="" /> ';
+				echo '<img src="i/share.png" id="bShare" class="btn" alt="Share" title="Partager / Intégrer" />';
+				echo '<img src="i/audio_mute.png" id="bMute" class="btn" alt="Mute" title="Activer/Couper le son" />';
+				echo '<img src="i/mode_full.png" id="bMode" class="btn" alt="Transcript" title="Afficher/Masquer le transcript" />';
+				echo '<img src="i/prev.png" id="bPrev" class="btn" alt="◀︎◀︎" title="Précédent" />';
+				echo '<img src="i/play.png" id="bPlay" class="btn" alt="▶︎" title="Play" />';
+				echo '<img src="i/pause.png" id="bPause" class="btn" alt="Pause" title="Pause" />';
+				echo '<img src="i/stop.png" id="bStop" class="btn" alt="◼︎" title="Stop" />';
+				echo '<img src=i/ffw.png" id="bNext" class="btn" alt="▶︎▶︎" title="Suivant" />';
 			echo '</nav>';
 	    echo '</header>';
 	    // _______________________________________________________________________________________________________________________________________
@@ -124,7 +124,7 @@
 		echo '</div></aside>';
 	    // _______________________________________________________________________________________________________________________________________
     	echo '<div id="overlay">';
-    		echo '<img src="/i/close-w.png" class="close" alt="&times;" title="Close" width="22" height="22" />';
+    		echo '<img src="i/close-w.png" class="close" alt="&times;" title="Close" width="22" height="22" />';
     		echo '<iframe></iframe>';
     	echo '</div>';
 	   	echo '<div id="viz">';
@@ -143,7 +143,7 @@
 			$e = preg_split('/\s/',$sound['entities']);
 			foreach ($e as $entity) {
 				if ($entity!='') {
-					$links.= '<a href="'.$entity.'" class="entity"><img src="/i/link.png" alt="" />'.@array_shift(explode('/', str_replace('http://', '', $entity))).'</a>';
+					$links.= '<a href="'.$entity.'" class="entity"><img src="i/link.png" alt="" />'.@array_shift(explode('/', str_replace('http://', '', $entity))).'</a>';
 				}
 			}
 			$track['link'] = $links;
