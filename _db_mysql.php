@@ -57,7 +57,6 @@ function db_s($table, $refs=array(), $sortParams=array()) {
 	$mysqli = db_o();																											// Ouvre une connexion
 	$sql = 'SELECT * FROM '.$table.db_w($refs);
 
-	console_log2('db_s $sql = ' . $sql );
 	// Sort parameters ______________________________________________________________________
 	if (count($sortParams)>0) {
 		$sort = array();
@@ -265,13 +264,4 @@ function db_close($link = null) {
 	}
 }
 
-
-# Helper for console log
-function console_log2($output, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
 ?>
