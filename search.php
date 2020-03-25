@@ -163,7 +163,7 @@
             echo '<h3>There is no result for ' . $criteria . '.</h3>';
         }
     } else {
-        $r_t = db_s('talks', array(), array('title' => 'ASC'));
+        $r_t = db_s('talks', array(), array('date' => 'DESC'));
         echo '<h2>All results :</h3>';
     }
         while ($t = db_fetch($r_t)) {
