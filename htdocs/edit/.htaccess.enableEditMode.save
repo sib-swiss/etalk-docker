@@ -1,6 +1,0 @@
-AuthType Basic
-AuthName "Edit-Login required"
-# (Following line optional)
-AuthBasicProvider file
-AuthUserFile /var/vhosts/vital-it.ch/etalk/conf/htpasswd/htpasswd_dheh_edit.txt
-Require valid-user

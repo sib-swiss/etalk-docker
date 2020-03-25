@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['HTTP_HOST']=='127.0.0.1'||$_SERVER['HTTP_HOST']=='etalk.cc') {
-	$GLOBALS['DBHost'] = 'XXXX';
+	$GLOBALS['DBHost'] = 'localhost';
 	$GLOBALS['DBUser'] = 'XXXX';
 	$GLOBALS['DBPass'] = 'XXXX';
 }
