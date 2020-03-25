@@ -212,9 +212,17 @@
 			echo '<nav>';
 				$talks = array('' => '(sélectionnez une conférence)');
 				$r_t = db_s('talks', array(), array('title' => 'ASC'));
+
 				while ($t = db_fetch($r_t)) {
-					//echo '<li class= "flex-disp-item"> <a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a></li>';
-					echo '<a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a>';
+					$dir = $t['dir'];
+			
+					console_log("testing dir :" . $dir . '.');
+					if (!is_dir('data/'. $dir)) {
+						db_d('talks', array('dir' => $dir));			
+						console_log("deleted etalk for unknown dir : " . $dir);
+					} else {
+						echo '<a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a>';
+					}
 				}
 			echo '</nav>';
 

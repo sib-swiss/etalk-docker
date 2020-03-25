@@ -167,11 +167,18 @@
         echo '<h2>All results :</h3>';
     }
         while ($t = db_fetch($r_t)) {
-            $imagefile = 'tmp/'.get_main_image($t['dir']);
+            $dir = $t['dir'];
+            $imagefile = 'tmp/'.get_main_image($dir);
             console_log('dir : '. $t['dir'] . '$ imagefile:' . $imagefile);
-?>
 
-                        <article id="post-<?= $t['dir'] ?>"
+
+					if (!is_dir('data/'. $dir)) {
+						db_d('talks', array('dir' => $dir));			
+						console_log("deleted etalk for unknown dir : " . $dir);
+					} else {
+//						echo '<a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a>';
+?>
+                    <article id="post-<?= $t['dir'] ?>"
                         class="post-<?= $t['dir'] ?> ppost type-post status-publish format-standard has-post-thumbnail hentry category-web feed-item">
 
                         <div class="row">
@@ -210,9 +217,10 @@
                             </div>
                         </div>
                     </article>
-
 <?php
-                }
+					}
+
+                } // while
 			    echo '</nav>';
 ?>
 
@@ -277,6 +285,7 @@
 </html>
 
 <?php
+/*
 # Helper for console log
 function console_log($output, $with_script_tags = true) {
     $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
@@ -284,7 +293,7 @@ function console_log($output, $with_script_tags = true) {
         $js_code = '<script>' . $js_code . '</script>';
     }
     echo $js_code;
-}
+} */
 
 function get_main_image($dir) {
     $r_t = db_s('sounds', array('dir' => $dir), array('id' => 'ASC'));
@@ -301,7 +310,7 @@ function search_term($term) {
     . " or author like '%" . $term . "%'"
     . " or exists (select 1 from sounds where sounds.dir = t.dir and sounds.text like '%" . $term . "%')"
     . " order by date desc";
-    console_log2('search $sql = ' . $sql );
+    console_log('search $sql = ' . $sql );
     if(!$result = $mysqli->query($sql)){
         dieWithError($mysqli->errno, $mysqli->error, $sql);
     }
