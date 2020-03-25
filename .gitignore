@@ -1,2 +1,3 @@
 htdocs/data/*
 htdocs/tmp/*
+conf/_db.conf.php
