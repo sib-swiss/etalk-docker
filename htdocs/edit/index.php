@@ -14,8 +14,9 @@
 		error_reporting(E_ALL);
 	}
 
-	date_default_timezone_set('Europe/Zurich');
-	include('../_db.php');
+	date_default_timezone_set('Europe/Zurich');	
+	require '../../conf/_db.conf.php';
+	require '../_db_mysql.php';
 	include('../_formutils.php');
 
 	$types = array(
@@ -143,10 +144,12 @@
 					// re-created and fixed data array
 					$datas = array(
 						'title' => $_REQUEST['title'],
-						'theme' => $_REQUEST['theme'], 
 						'author' => $_REQUEST['author'],
 						'date' => implode('-', array_reverse(explode('.', $_REQUEST['date']))),
-						'theme' => $_REQUEST['theme']
+						'theme' => $_REQUEST['theme'], 
+						'duration' => $_REQUEST['duration'], 
+						'external_id' => $_REQUEST['external_id'], 
+						'published' => $_REQUEST['published']
 					);
 
 					// Debug 'UPDATE'
@@ -231,6 +234,10 @@
 			$newValues['date'] = date("Y-m-d");
 			$newValues['theme'] = "";
 
+			$newValues['duration'] = "";
+			$newValues['external_id'] = "";
+			$newValues['published'] = 0;
+
 			// Merge previous array with new one
 			$correctValues = array_merge($sel, $newValues);
 
@@ -280,11 +287,18 @@
 				printTextInput('Date', 'date', datetime('d.m.Y', $talk['date']), 10, 10);
 				echo '<br/>';
 				printTextInput('Thème', 'theme', $talk['theme'], 20, 255);
+				echo '<br/>';
+				printTextInput('Nakala ID', 'external_id', $talk['external_id'], 20, 255);
+
 			echo '</div>';
 			echo '<div style="width:660px; float:left;">';
 				printTextInput('Intitulé', 'title', $talk['title'], 100, 255);
 				echo '<br/>';
 				printTextInput('Auteur', 'author', $talk['author'], 50, 255);
+				echo '<br/>';
+				printTextInput('Duration', 'duration', $talk['duration'], 20, 255);
+				echo '<br/>';
+				printTextInput('Published (0/1)', 'published', $talk['published'], 1, 255);
 			echo '</div>';
 		}
 		echo '<div style="clear:both"></div><br/><br/><label>Outils :</label>';
