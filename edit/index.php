@@ -143,6 +143,7 @@
 					// re-created and fixed data array
 					$datas = array(
 						'title' => $_REQUEST['title'],
+						'theme' => $_REQUEST['theme'], 
 						'author' => $_REQUEST['author'],
 						'date' => implode('-', array_reverse(explode('.', $_REQUEST['date']))),
 						'theme' => $_REQUEST['theme']
