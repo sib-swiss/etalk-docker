@@ -18,8 +18,6 @@
         href='https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400&#038;subset=latin&#038;ver=1419502366'
         type='text/css' media='all' />
 
-        <!--
-            -->
     <link rel='stylesheet' id='basics' href='css/style.min_new.css'
         type='text/css' media='all' />
 
@@ -130,10 +128,6 @@
                                     <img width="100%" height="50%"
                                         src="image/imageunique.jpg"
                                         class="attachment-single-page wp-post-image" alt="100H" />
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
                                     </a>
                                 <div class="orbit-caption" position="relative">
                                     <a href=#bp>
@@ -157,16 +151,16 @@
 
     console_log('submitted:' . isset($_POST['submit-search']));
     console_log('$_REQUEST:' . $_POST);
-    console_log('search:' . $_POST['search']);
-    if (isset($_POST['submit-search']) && $_POST['search'] != '') {
-        $r_t = search_term($_POST['search']);
+    $criteria =  $_POST['search'];
+    if (isset($_POST['submit-search']) && $criteria != '') {
+        $r_t = search_term($criteria);
         $count = db_count($r_t);
         if ($count > 1) {
-            echo '<h3>There are '.$count.' result(s) :</h3>';
+            echo '<h3>There are '.$count.' result(s) for ' . $criteria . ' :</h3>';
         } else if ($count == 1) {
-            echo '<h3>There is 1 result :</h3>';
+            echo '<h3>There is 1 result for ' . $criteria . ' :</h3>';
         } else {
-            echo '<h3>There is no result.</h3>';
+            echo '<h3>There is no result for ' . $criteria . '.</h3>';
         }
     } else {
         $r_t = db_s('talks', array(), array('title' => 'ASC'));
@@ -174,7 +168,7 @@
     }
         while ($t = db_fetch($r_t)) {
             $imagefile = 'tmp/'.get_main_image($t['dir']);
-            console_log('$imagefile:' . $imagefile);
+            console_log('dir : '. $t['dir'] . '$ imagefile:' . $imagefile);
 ?>
 
                         <article id="post-<?= $t['dir'] ?>"
