@@ -288,7 +288,9 @@
 				echo '<br/>';
 				printTextInput('Thème', 'theme', $talk['theme'], 20, 255);
 				echo '<br/>';
-				printTextInput('Nakala ID', 'external_id', $talk['external_id'], 20, 255);
+				printTextInput('Duration', 'duration', $talk['duration'], 20, 255);
+				echo '<br/>';
+				printTextInput('Published (0/1)', 'published', $talk['published'], 1, 255);
 
 			echo '</div>';
 			echo '<div style="width:660px; float:left;">';
@@ -296,9 +298,7 @@
 				echo '<br/>';
 				printTextInput('Auteur', 'author', $talk['author'], 50, 255);
 				echo '<br/>';
-				printTextInput('Duration', 'duration', $talk['duration'], 20, 255);
-				echo '<br/>';
-				printTextInput('Published (0/1)', 'published', $talk['published'], 1, 255);
+				printTextInput('Nakala ID', 'external_id', $talk['external_id'], 50, 255);
 			echo '</div>';
 		}
 		echo '<div style="clear:both"></div><br/><br/><label>Outils :</label>';

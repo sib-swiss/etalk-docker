@@ -163,7 +163,7 @@
             echo '<h3>There is no result for ' . $criteria . '.</h3>';
         }
     } else {
-        $r_t = db_s('talks', array(), array('date' => 'DESC'));
+        $r_t = db_s('talks', array('published' => '1'), array('date' => 'DESC'));
         echo '<h2>All results :</h3>';
     }
         while ($t = db_fetch($r_t)) {
@@ -200,11 +200,19 @@
                                         <ul>
                                             <li><?= $t['author'] ?></li>
                                             <li><a href="index.php?dir=<?= $t['dir'] ?>">eTalk</a></li>
-                                            <!-- datetime('h:i', $t['date'])  -->
+                                            <li><?= $t['duration'] ?></li>
                                             <li><?= datetime('F d, Y', $t['date']) ?></li>
                                         </ul>    
                                         <div class="clearfix"></div>
-                                    </div>   
+                                    </div>
+                                    <div class="post-meta">    
+                                        <ul>
+                                            <li>Nakala ID : <?= $t['external_id'] ?></li>
+                                        </ul>    
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="post-meta">                                            
+                                    </div>  
                                     <div class="feed-excerpt">
                                         <a class="read-more button"
                                             href="index.php?dir=<?= $t['dir'] ?>" target="_blank"
@@ -306,10 +314,11 @@ function get_main_image($dir) {
 function search_term($term) {
     $mysqli = db_o();
     $sql = "select * from talks t"
-    . " where title like '%" . $term . "%'"
-    . " or author like '%" . $term . "%'"
-    . " or exists (select 1 from sounds where sounds.dir = t.dir and sounds.text like '%" . $term . "%')"
-    . " order by date desc";
+    . " where published = 1 and ("
+    . "    title like '%" . $term . "%'"
+    . "    or author like '%" . $term . "%'"
+    . "    or exists (select 1 from sounds where sounds.dir = t.dir and sounds.text like '%" . $term . "%')"
+    . " ) order by date desc";
     console_log('search $sql = ' . $sql );
     if(!$result = $mysqli->query($sql)){
         dieWithError($mysqli->errno, $mysqli->error, $sql);
