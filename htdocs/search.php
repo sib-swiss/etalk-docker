@@ -126,7 +126,7 @@
                             <li>
                                 <a href="">
                                     <img width="100%" height="50%"
-                                        src="image/imageunique.jpg"
+                                        src="image/Imageunique.jpg"
                                         class="attachment-single-page wp-post-image" alt="100H" />
                                     </a>
                                 <div class="orbit-caption" position="relative">
