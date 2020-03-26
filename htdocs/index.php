@@ -96,7 +96,7 @@
 
 					foreach ($files as $f) {
 						if (substr($f, 0, 1)!='.' && !is_dir($docsFolder.'/'.$f)) {
-							echo '<a href="/'.$docsFolder.'/'.$f.'" class="doc">'.$f.'</a>';
+							echo '<a href="'.$docsFolder.'/'.$f.'" class="doc">'.$f.'</a>';
 						}
 					}
 				}
@@ -169,18 +169,18 @@
 		// Original player line
 		// I haven't modified it. Just added a test before display.
 		if (count($audioFiles) > 0) {
-			echo '<audio id="player" preload="auto" src="/data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="/data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';
+			echo '<audio id="player" preload="auto" src="data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';
 		}
 
 		/* Duplicated useless player line...
 		Probably a dirty attemp to preload next file when existing.
 		But written without a proper audio files counting...
 		Commented to avoid duplication...
-		echo '<audio id="player" preload="preload" src="/data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="/data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>'; */
+		echo '<audio id="player" preload="preload" src="data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>'; */
 		
 		/* Preload the next file?
 		Was already commented in the original version
-		echo '<audio id="preloader" preload="preload" src="/data/'.$audioFiles[1]['snd'].'"><source src="/data/'.$audioFiles[1]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>'; */
+		echo '<audio id="preloader" preload="preload" src="/data/'.$audioFiles[1]['snd'].'"><source src="data/'.$audioFiles[1]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>'; */
 
 		// Load and init etalk modules
 		if (count($audioFiles) > 0) {
