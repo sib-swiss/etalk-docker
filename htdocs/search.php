@@ -176,7 +176,6 @@
 						db_d('talks', array('dir' => $dir));			
 						console_log("deleted etalk for unknown dir : " . $dir);
 					} else {
-//						echo '<a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a>';
 ?>
                     <article id="post-<?= $t['dir'] ?>"
                         class="post-<?= $t['dir'] ?> ppost type-post status-publish format-standard has-post-thumbnail hentry category-web feed-item">
@@ -207,7 +206,7 @@
                                     </div>
                                     <div class="post-meta">    
                                         <ul>
-                                            <li>Metadata : <?= $t['external_id'] ?></li>
+                                            <li>Metadata : <a href="<?= $t['external_id'] ?>" target="_blank"><?= $t['external_id']?></a></li>
                                         </ul>    
                                         <div class="clearfix"></div>
                                     </div>
