@@ -1,3 +1,5 @@
 htdocs/data/*
 htdocs/tmp/*
 conf/_db.conf.php
+conf/htpassword/
+htdocs/edit/.htaccess
