@@ -6,7 +6,7 @@ This application is used by the VRE application (see https://gitlab.isb-sib.ch/m
 
 The main directories are :
 
-- conf : configuration directory. The file "_app.conf_TEMPLATE.php" is a template for As this file is not managed by Git, it must be created directly on the server. 
+- conf : configuration directory. The file `_app.conf_TEMPLATE.php` is a template for `conf/_app.conf.php`. As this file is not managed by Git, it must be created directly on the server. 
 - htdocs : the application root.
  
 ## How to install
@@ -15,7 +15,7 @@ The main directories are :
 - Create the MySQL database 
 - Run the DDL script  
 - Create 2 directories under htdocs : data and tmp.
-- Create a file "conf/_app.conf.php" on the model of "conf/_app.conf_TEMPLATE.php", and edit the DB credentials according the database configuration.
+- Create a file `conf/_app.conf.php` on the model of `conf/_app.conf_TEMPLATE.php`, and edit the DB credentials according the database configuration.
   
 ## How to use
 
