@@ -3,6 +3,7 @@
 
 ## Summary
 This application is used by the VRE application (see https://gitlab.isb-sib.ch/mark16-vre-group/vre).
+The code has been published here in 2020: https://github.com/sib-swiss/etalk-docker in GNU General Public License v3.0 only (GPL-3.0)
 
 The main directories are :
 
