@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TalkResource\Pages;
+use App\Filament\Resources\TalkResource\RelationManagers\SoundsRelationManager;
 use App\Models\Talk;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -24,10 +25,10 @@ class TalkResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')->required(),
                 Forms\Components\Toggle::make('published'),
-                Forms\Components\TextInput::make('author')->required(),
-                Forms\Components\DatePicker::make('date')->required(),
-                Forms\Components\TextInput::make('theme')->required(),
-                Forms\Components\TextInput::make('duration')->required(),
+                Forms\Components\TextInput::make('author'),
+                Forms\Components\DatePicker::make('date'),
+                Forms\Components\TextInput::make('theme'),
+                Forms\Components\TextInput::make('duration'),
             ]);
     }
 
@@ -48,6 +49,7 @@ class TalkResource extends Resource
     public static function getRelations(): array
     {
         return [
+           SoundsRelationManager::class,
         ];
     }
 
