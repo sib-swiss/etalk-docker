@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Talk extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'dir';
+
     public $incrementing = false;
 
     /**
@@ -20,9 +22,10 @@ class Talk extends Model
         'date' => 'date:Y-m-d',
     ];
 
+    protected $guarded = [];
 
     public function sounds()
     {
-        return $this->hasMany(Sound::class, 'dir', 'dir');
+        return $this->hasMany(Sound::class);
     }
 }

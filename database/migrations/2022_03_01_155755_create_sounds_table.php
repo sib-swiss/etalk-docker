@@ -14,8 +14,10 @@ class CreateSoundsTable extends Migration
     public function up()
     {
         Schema::create('sounds', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('dir');
+            //$table->string('id');
+            $table->id();
+            $table->unsignedBigInteger('talk_id');
+            $table->string('name');
             $table->text('text');
             $table->enum('type', ['explanation', 'quotation'])->default('explanation');
             $table->string('entities');
