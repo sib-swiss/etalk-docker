@@ -21,7 +21,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::view('/welcome', 'welcome')->name('welcome');
+Route::view('/', 'home')->name('home');
+Route::view('/introduction', 'home')->name('introduction');
+Route::view('/mode-demploi', 'home')->name('mode-demploi');
+Route::view('/mode-demploifr', 'home')->name('mode-demploifr');
+Route::view('/contact', 'home')->name('contact');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
