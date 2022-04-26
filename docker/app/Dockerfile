@@ -22,7 +22,7 @@ RUN dnf -y module list php
 # Enable PHP version 8.1
 RUN dnf -y module reset php
 RUN dnf -y module install php:remi-8.1
-RUN dnf -y install php-gd php-opcache php-xml php-pdo php-fpm php-mbstring php-mysql
+RUN dnf -y install php-gd php-opcache php-xml php-pdo php-fpm php-mbstring php-mysql php-zip
 RUN dnf -y install supervisor
 COPY php.ini /etc/php.d/99-sail.ini
 
@@ -35,6 +35,8 @@ RUN mkdir /run/php-fpm
 
 # composer
 RUN php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+
+RUN dnf -y install git zip
 
 #supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
