@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TalkController;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
@@ -28,10 +29,11 @@ Route::view('/welcome', 'welcome')->name('welcome');
 
 Route::get('/', [TalkController::class, 'index'])->name('home');
 Route::get('/talks/{talk}', [TalkController::class, 'show'])->name('talk.show');
-Route::view('/introduction', 'home')->name('introduction');
-Route::view('/mode-demploi', 'home')->name('mode-demploi');
-Route::view('/mode-demploifr', 'home')->name('mode-demploifr');
-Route::view('/contact', 'home')->name('contact');
+Route::view('/introduction', [SectionController::class, 'introduction'])->name('introduction');
+Route::view('/mode-demploi', [SectionController::class, 'mode-demploi'])->name('mode-demploi');
+Route::view('/mode-demploifr', [SectionController::class, 'mode-demploifr'])->name('mode-demploifr');
+Route::view('/contact', [SectionController::class, 'contact'])->name('contact');
+Route::view('/about', [SectionController::class, 'about'])->name('about');
 
 Route::middleware('guest')->group(function (): void {
     Route::get('login', Login::class)

@@ -48,7 +48,14 @@
     ]
     as $routeName => $text)
                     <li class="nav-item p-2">
-                        <a class="nav-link text-gray-500 hover:text-white hover:bg-[#511C69] focus:text-gray-700 p-6"
+                        <a class="nav-link 
+                                    @if (Illuminate\Support\Facades\Route::currentRouteName() === $routeName) 
+                                        text-white bg-[#511C69]
+                                    @else
+                                        text-gray-500                                        
+                                    @endif
+                                    hover:text-white hover:bg-[#511C69] 
+                                    focus:text-gray-700 p-6"
                             href="{{ route($routeName) }}">{{ $text }}</a>
                     </li>
                 @endforeach

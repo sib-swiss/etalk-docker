@@ -10,7 +10,7 @@
         Search input
     </div>
 
-    <div class="bg-gray-100">
+    <div>
         @foreach ($talks as $talk)
             <article class="container mx-auto flex justify-start mb-10 bg-white p-6">
                 <div class="w-1/4">

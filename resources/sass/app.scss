@@ -14,7 +14,9 @@
  *
  * See: https://github.com/laravel-frontend-presets/tall/issues/7
  */
- input:invalid, textarea:invalid, select:invalid {
+input:invalid,
+textarea:invalid,
+select:invalid {
     box-shadow: none;
 }
 
@@ -54,7 +56,22 @@
     display: none;
 }
 
-
 body {
-    font-family: "Lucida Grande", Verdana, sans-serif;
+    @apply bg-gray-100;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+    @apply text-4xl my-2;
+}
+h2 {
+    @apply text-3xl my-2;
+}
+
+p {
+    @apply my-2;
+}
+
+a {
+    @apply text-blue-500;
 }
