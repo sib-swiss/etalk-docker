@@ -3,7 +3,7 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.1
+            context: docker/app
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -25,9 +25,6 @@ services:
             - sail
         depends_on:
             - db
-            - redis
-            - meilisearch
-            - selenium
     db:
         image: 'mariadb:10'
         ports:
@@ -57,48 +54,11 @@ services:
             PMA_PASSWORD: "${DB_PASSWORD}"
         networks:
             - sail
-    redis:
-        image: 'redis:alpine'
-        ports:
-            - '${FORWARD_REDIS_PORT:-6379}:6379'
-        volumes:
-            - 'sail-redis:/data'
-        networks:
-            - sail
-        healthcheck:
-            test: [ "CMD", "redis-cli", "ping" ]
-            retries: 3
-            timeout: 5s
-    meilisearch:
-        image: 'getmeili/meilisearch:latest'
-        ports:
-            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
-        volumes:
-            - 'sail-meilisearch:/data.ms'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                [
-                    "CMD",
-                    "wget",
-                    "--no-verbose",
-                    "--spider",
-                    "http://localhost:7700/health"
-                ]
-            retries: 3
-            timeout: 5s
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:
             - '${FORWARD_MAILHOG_PORT:-1025}:1025'
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
-        networks:
-            - sail
-    selenium:
-        image: 'selenium/standalone-chrome'
-        volumes:
-            - '/dev/shm:/dev/shm'
         networks:
             - sail
 networks:
