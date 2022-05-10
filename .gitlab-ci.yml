@@ -43,7 +43,7 @@ phpunit:
   script:
     - php -v
     - ./vendor/phpunit/phpunit/phpunit --version
-    - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr
+    - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --coverage-text --log-junit phpunit-report.xml
   artifacts:
     paths:
       - ./storage/app/log # for debugging
@@ -64,7 +64,6 @@ security-checker:
       artifacts: true
   script:
     - vendor/bin/security-checker security:check composer.lock
-
 # deploy_dev:
 #   stage: deploy
 #   needs:
