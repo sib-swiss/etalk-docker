@@ -41,15 +41,10 @@ phpunit:
   dependencies:
     - composer
   script:
-    - php -v
-    - ./vendor/phpunit/phpunit/phpunit --version
-    - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --coverage-text --log-junit phpunit-report.xml
-  artifacts:
-    paths:
-      - ./storage/app/log # for debugging
-      - ./storage/logs # for debugging
-    expire_in: 1 days
-    when: on_failure
+    - ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --log-junit phpunit-report.xml
+ artifacts:
+    reports:
+      junit: phpunit-report.xml
 
 codestyle:
   stage: testing
