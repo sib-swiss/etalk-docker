@@ -42,7 +42,7 @@ phpunit:
     - composer
   script:
     - ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --log-junit phpunit-report.xml
- artifacts:
+  artifacts:
     reports:
       junit: phpunit-report.xml
 
@@ -59,7 +59,6 @@ security-checker:
       artifacts: true
   script:
     - vendor/bin/security-checker security:check composer.lock
-
 # deploy_dev:
 #   stage: deploy
 #   needs:
