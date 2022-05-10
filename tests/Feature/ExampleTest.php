@@ -1,18 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ExampleTest extends TestCase
 {
     /**
      * A basic test example.
-     *
-     * @return void
      */
-    public function testBasicTest()
+    public function testBasicTest(): void
     {
-        $this->get(route('home'))->assertSuccessful();
+        $this->get(route('introduction'))->assertSuccessful();
     }
 }
