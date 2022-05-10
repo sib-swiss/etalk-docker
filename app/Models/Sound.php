@@ -6,12 +6,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Sound extends Model
+class Sound extends Model implements HasMedia
 {
     use HasFactory;
-
-    public $incrementing = false;
+    use InteractsWithMedia;
 
     public function talk()
     {

@@ -11,7 +11,7 @@ class Talk extends Model
 {
     use HasFactory;
 
-    public $incrementing = false;
+    // public $incrementing = false;
 
     /**
      * The attributes that should be cast.
