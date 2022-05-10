@@ -6,7 +6,6 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TalkController;
-use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
@@ -35,13 +34,13 @@ Route::view('/mode-demploifr', [SectionController::class, 'mode-demploifr'])->na
 Route::view('/contact', [SectionController::class, 'contact'])->name('contact');
 Route::view('/about', [SectionController::class, 'about'])->name('about');
 
-Route::middleware('guest')->group(function (): void {
-    Route::get('login', Login::class)
-        ->name('login');
-
-    Route::get('register', Register::class)
-        ->name('register');
-});
+Route::get('login', function () {
+    return redirect(route(
+        auth()->user()
+        ? 'filament.pages.dashboard'
+        : 'filament.auth.login'
+    ));
+})->name('login');
 
 Route::get('password/reset', Email::class)
     ->name('password.request');
