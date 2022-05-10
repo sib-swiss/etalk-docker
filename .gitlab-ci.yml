@@ -59,6 +59,7 @@ security-checker:
       artifacts: true
   script:
     - vendor/bin/security-checker security:check composer.lock
+
 # deploy_dev:
 #   stage: deploy
 #   needs:
@@ -69,9 +70,8 @@ security-checker:
 #     - ssh-add <(echo "$DEV_SSH_PRIVATE_KEY")
 #     - mkdir -p ~/.ssh
 #     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-#     - echo "DEPLOY_DEV_USER=$DEPLOY_DEV_USER" >> .env
-#     - echo "DEPLOY_DEV_HOST=$DEPLOY_DEV_HOST" >> .env
-#     - echo "DEPLOY_DEV_PATH=$DEPLOY_DEV_PATH" >> .env
+#     - echo "DEPLOY_SERVER_DEV=$DEPLOY_SERVER_DEV" >> .env
+#     - echo "DEPLOY_PATH_DEV=$DEPLOY_PATH_DEV" >> .env
 #     - ./vendor/bin/envoy run deploy
 #   only:
 #     - develop
