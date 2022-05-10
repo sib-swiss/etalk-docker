@@ -25,7 +25,7 @@ class CreateSoundsTable extends Migration
             $table->string('file_credits')->default('Creative Commons Attribution - Pas dâ€™Utilisation Commerciale - Partage dans les MÃªmes Conditions 3.0 Suisse');
             $table->string('file_link')->default('http://creativecommons.org/licenses/by-nc-sa/3.0/ch/deed.fr');
             $table->enum('chaptering', ['continue', 'paragraph', 'section'])->default('continue');
-            $table->string('section_title');
+            $table->string('section_title')->nullable();
         });
     }
 

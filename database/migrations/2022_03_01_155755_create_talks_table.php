@@ -19,7 +19,7 @@ class CreateTalksTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->date('date');
-            $table->string('theme');
+            $table->string('theme')->nullable();
             $table->string('duration')->default('');
             $table->string('external_id')->default('');
             $table->boolean('published')->default(false);

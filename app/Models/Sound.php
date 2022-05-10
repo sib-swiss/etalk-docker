@@ -14,6 +14,8 @@ class Sound extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
+    protected $guarded = [];
+
     public function talk()
     {
         return $this->belongsTo(Talk::class);

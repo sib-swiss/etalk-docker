@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "enlightn/security-checker": "^1.10",
         "filament/filament": "^2.10",
+        "filament/spatie-laravel-media-library-plugin": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-frontend-presets/tall": "^4.2",
         "laravel/framework": "^9.2",
