@@ -44,6 +44,11 @@ phpunit:
   script:
     - ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --log-junit phpunit-report.xml
   artifacts:
+    paths:
+      - ./storage/app/log
+      - ./storage/logs
+    expire_in: 1 days
+    when: on_failure
     reports:
       junit: phpunit-report.xml
 
@@ -61,7 +66,6 @@ security-checker:
   script:
     - vendor/bin/security-checker security:check composer.lock
 
-
 deploy_dev:
   stage: deploy
   needs:
@@ -77,7 +81,6 @@ deploy_dev:
     - ./vendor/bin/envoy run deploy
   only:
     - dev
-
 # deploy_prod:
 #   stage: deploy
 #   needs:
