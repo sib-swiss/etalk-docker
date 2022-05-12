@@ -60,6 +60,8 @@ security-checker:
       artifacts: true
   script:
     - vendor/bin/security-checker security:check composer.lock
+
+
 deploy_dev:
   stage: deploy
   needs:
@@ -74,7 +76,7 @@ deploy_dev:
     - echo "DEPLOY_PATH_DEV=$DEPLOY_PATH_DEV" >> .env
     - ./vendor/bin/envoy run deploy
   only:
-    - develop
+    - dev
 
 # deploy_prod:
 #   stage: deploy
