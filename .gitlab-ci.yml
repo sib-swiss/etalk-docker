@@ -42,6 +42,7 @@ phpunit:
   dependencies:
     - composer
   script:
+    - php artisan storage:link
     - ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --log-junit phpunit-report.xml
   artifacts:
     paths:
