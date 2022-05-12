@@ -60,21 +60,21 @@ security-checker:
       artifacts: true
   script:
     - vendor/bin/security-checker security:check composer.lock
-# deploy_dev:
-#   stage: deploy
-#   needs:
-#     - job: composer
-#       artifacts: true
-#   script:
-#     - eval $(ssh-agent -s)
-#     - ssh-add <(echo "$DEV_SSH_PRIVATE_KEY")
-#     - mkdir -p ~/.ssh
-#     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-#     - echo "DEPLOY_SERVER_DEV=$DEPLOY_SERVER_DEV" >> .env
-#     - echo "DEPLOY_PATH_DEV=$DEPLOY_PATH_DEV" >> .env
-#     - ./vendor/bin/envoy run deploy
-#   only:
-#     - develop
+deploy_dev:
+  stage: deploy
+  needs:
+    - job: composer
+      artifacts: true
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$DEV_SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo "DEPLOY_SERVER_DEV=$DEPLOY_SERVER_DEV" >> .env
+    - echo "DEPLOY_PATH_DEV=$DEPLOY_PATH_DEV" >> .env
+    - ./vendor/bin/envoy run deploy
+  only:
+    - develop
 
 # deploy_prod:
 #   stage: deploy
