@@ -46,7 +46,7 @@ phpunit:
     - ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr --log-junit phpunit-report.xml
   artifacts:
     paths:
-      - ./storage/app/log
+      - ./storage/app
       - ./storage/logs
     expire_in: 1 days
     when: on_failure
