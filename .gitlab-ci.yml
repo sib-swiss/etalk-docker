@@ -23,6 +23,8 @@ composer:
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - cp .env.example .env
     - php artisan key:generate
+    - echo "DEPLOY_SERVER_DEV=$DEPLOY_SERVER_DEV" >> .env
+    - echo "DEPLOY_PATH_DEV=$DEPLOY_PATH_DEV" >> .env
     - php artisan storage:link
   artifacts:
     paths:
@@ -77,8 +79,6 @@ deploy_dev:
     - ssh-add <(echo "$DEV_SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - echo "DEPLOY_SERVER_DEV=$DEPLOY_SERVER_DEV" >> .env
-    - echo "DEPLOY_PATH_DEV=$DEPLOY_PATH_DEV" >> .env
     - ./vendor/bin/envoy run deploy
   only:
     - dev
