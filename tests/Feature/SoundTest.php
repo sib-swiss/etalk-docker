@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use App\Models\Sound;
+use Http;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Storage;
@@ -25,7 +26,15 @@ final class SoundTest extends TestCase
 
         // attach image as cover
         Storage::makeDirectory('public/testing');
-        $filename = $this->faker->image('public/storage/testing', 640, 480, null, false);
+
+        $image = Http::get('https://via.placeholder.com/640x480.png');
+        $filename = 'test.png';
+        Storage::put('public/testing/' . $filename, $image->body());
+
+        // $filename = $this->faker->image('public/storage/testing', 640, 480, null, false);
+        // this is now failig: https://github.com/FakerPHP/Faker/issues/475
+        // static::assertNotFalse($filename);
+
         $filePath = storage_path('app/public/testing/' . $filename);
 
         // assert attached
