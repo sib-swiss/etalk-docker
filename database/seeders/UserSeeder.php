@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\User;
@@ -10,17 +12,14 @@ class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        if (config('app.env') === 'local') {
-            User::create([
-               'name'=>'Silvano',
-               'email'=>'silvano.alda@sib.swiss',
-               'password'=>Hash::make('password'),
-           ]);
-        }
+        // crete one admin user with password: to change manually after
+        User::create([
+            'name' => 'Silvano',
+            'email' => 'silvano.alda@sib.swiss',
+            'password' => Hash::make('password'),
+        ]);
     }
 }
