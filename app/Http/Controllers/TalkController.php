@@ -14,6 +14,7 @@ class TalkController extends Controller
         $data = [
             'talks' => Talk::with('sounds')
                 ->where('published', 1)
+                ->searchByCriteria($request->search)
                 ->orderBy('date', 'DESC')
                 ->get(),
         ];

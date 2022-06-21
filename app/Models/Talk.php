@@ -28,4 +28,22 @@ class Talk extends Model
     {
         return $this->hasMany(Sound::class);
     }
+
+    /**
+     * Scope a query to search by criteria.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearchByCriteria($query, string $criteria)
+    {
+        return $query->where(function ($query) use ($criteria): void {
+            $query->where('title', 'like', '%' . $criteria . '%');
+            // search in sounds text
+            $query->orWhereHas('sounds', function ($query) use ($criteria): void {
+                $query->where('text', 'like', '%' . $criteria . '%');
+            });
+        });
+    }
 }
