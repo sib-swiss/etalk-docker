@@ -36,7 +36,7 @@ class Talk extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeSearchByCriteria($query, string $criteria)
+    public function scopeSearchByCriteria($query, string|null $criteria)
     {
         return $query->where(function ($query) use ($criteria): void {
             $query->where('title', 'like', '%' . $criteria . '%');
