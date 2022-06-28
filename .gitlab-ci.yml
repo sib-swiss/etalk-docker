@@ -59,7 +59,7 @@ codestyle:
   stage: testing
   script:
     - ./vendor/bin/pint --test
-    dependencies:
+  dependencies:
     - composer
 
 security-checker:
