@@ -18,7 +18,7 @@ class SoundSeeder extends Seeder
     {
         $fileCsv = storage_path('app/sounds.csv');
         // dd($fileCsv);
-        if (!File::exists($fileCsv)) {
+        if (! File::exists($fileCsv)) {
             return;
         }
 
@@ -26,7 +26,7 @@ class SoundSeeder extends Seeder
         $csvFile = fopen($fileCsv, 'r');
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
-            if (!$firstline) {
+            if (! $firstline) {
                 $talk = Talk::firstWhere('dir', $data[1]);
                 $sound = Sound::create([
                     'name' => $data['0'],
@@ -41,7 +41,7 @@ class SoundSeeder extends Seeder
                     'section_title' => $data['9'],
                 ]);
 
-                $filePath = storage_path('app/public/tmp/' . $data['5']);
+                $filePath = storage_path('app/public/tmp/'.$data['5']);
                 if (trim($data['5']) && File::exists($filePath)) {
                     // echo "\n" . $filePath;
                     $sound->addMedia($filePath)

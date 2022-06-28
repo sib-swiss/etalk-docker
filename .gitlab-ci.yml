@@ -58,8 +58,9 @@ phpunit:
 codestyle:
   stage: testing
   script:
-    - phpcs --extensions=php app
-  dependencies: []
+    - ./vendor/bin/pint --test
+    dependencies:
+    - composer
 
 security-checker:
   stage: testing

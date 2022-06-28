@@ -49,7 +49,7 @@ class TalkResource extends Resource
     public static function getRelations(): array
     {
         return [
-           SoundsRelationManager::class,
+            SoundsRelationManager::class,
         ];
     }
 

@@ -29,13 +29,13 @@ final class SoundTest extends TestCase
 
         $image = Http::get('https://via.placeholder.com/640x480.png');
         $filename = 'test.png';
-        Storage::put('public/testing/' . $filename, $image->body());
+        Storage::put('public/testing/'.$filename, $image->body());
 
         // $filename = $this->faker->image('public/storage/testing', 640, 480, null, false);
         // this is now failig: https://github.com/FakerPHP/Faker/issues/475
         // static::assertNotFalse($filename);
 
-        $filePath = storage_path('app/public/testing/' . $filename);
+        $filePath = storage_path('app/public/testing/'.$filename);
 
         // assert attached
         $toMediaCollection = $sound
@@ -45,7 +45,7 @@ final class SoundTest extends TestCase
 
         // assert url of image
         $urlToFirstListImage = $sound->getFirstMediaUrl();
-        static::assertSame(url('storage/' . $sound->id . '/' . $filename), $urlToFirstListImage);
+        static::assertSame(url('storage/'.$sound->id.'/'.$filename), $urlToFirstListImage);
 
         // clean
         Storage::deleteDirectory('public/testing');

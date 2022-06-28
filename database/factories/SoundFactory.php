@@ -24,7 +24,7 @@ class SoundFactory extends Factory
 
         return [
             'talk_id' => Talk::factory(),
-            'name' => $dir . '/Section_' . random_int(0, 20) . '.mp3',
+            'name' => $dir.'/Section_'.random_int(0, 20).'.mp3',
             'text' => $this->faker->text(),
             'type' => collect(['explanation', 'quotation'])->random(),
             'entities' => $this->faker->url(),
