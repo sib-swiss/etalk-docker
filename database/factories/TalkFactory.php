@@ -17,11 +17,11 @@ class TalkFactory extends Factory
     public function definition()
     {
         return [
-            'dir'=> $this->faker->name(),
-            'title'=> $this->faker->title(),
-            'author'=> $this->faker->firstName(),
-            'date'=> $this->faker->date(),
-            'theme'=> $this->faker->firstName(),
+            'dir' => $this->faker->name(),
+            'title' => $this->faker->title(),
+            'author' => $this->faker->firstName(),
+            'date' => $this->faker->date(),
+            'theme' => $this->faker->firstName(),
         ];
     }
 }
