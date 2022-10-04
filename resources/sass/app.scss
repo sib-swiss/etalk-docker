@@ -76,8 +76,9 @@ a {
     @apply text-blue-500;
 }
 
+
 #wait {
-    @apply bg-black opacity-80 absolute top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8;
+    @apply bg-black opacity-80 absolute top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8 flex;
 }
 #wait > header {
     @apply w-1/2;

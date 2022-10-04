@@ -3,7 +3,8 @@
 @section('content')
     <div x-data="etalkShow({{ $talk->sounds->map->only('file', 'name') }})">
 
-        <div id="wait" :class=" wait ? 'flex' : 'hidden'">
+        <div id="wait" x-show="wait" x-transition x-transition.duration.500ms>
+
             <header>
                 <h1>{{ $talk->title }}</h1>
                 <h2>{{ $talk->author }} - {{ $talk->date->format('d.m.Y') }}</h2>
@@ -75,7 +76,7 @@
                     <img src="{{ url('i/audio_mute.png') }}" ù class="btn" alt="Mute" @click="toggleMute"
                         title="Activer/Couper le son" />
 
-                    <img src="{{ url('i/mode_full.png') }}" id="bMode" class="btn" alt="Transcript"
+                    <img src="{{ url('i/mode_full.png') }}" @click="toggleMode" class="btn" alt="Transcript"
                         title="Afficher/Masquer le transcript" />
 
                     <img src="{{ url('i/prev.png') }}" @click="prev" class="btn" alt="◀︎◀︎" title="Précédent" />
@@ -96,7 +97,8 @@
 
             <div style="background-image: url('{{ url('i/bg_dia.png') }}') " class="flex">
 
-                <div id="viz" x-ref="viz" class="w-1/4 bg-white p-6">
+                <div id="viz" x-ref="viz" class="w-1/4 bg-white p-6" x-show="showTranscript" x-transition
+                    x-transition.duration.500ms>
                     @foreach ($talk->sounds as $i => $sound)
                         <div class="sound" :class=" currentSnd == {{ $i }} ? 'current' : ''"
                             @click="setCurrentSnd({{ $i }}); play()">
@@ -109,7 +111,9 @@
                 </div>
 
 
-                <div class="w-3/4 p-4 flex flex-col justify-between h-screen fixed left-1/4 top-10">
+                <div class="p-4 flex flex-col justify-between h-screen "
+                    :class="showTranscript ? 'w-3/4 left-1/4 fixed top-10' : 'w-full mt-10'" x-transition
+                    x-transition.duration.500ms>
                     <div class="text-center ">
                         <figure class="inline-block ">
                             <img x-ref="suondFigure" src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}"

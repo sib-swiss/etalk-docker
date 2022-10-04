@@ -8,12 +8,14 @@ window.Alpine = Alpine;
 Alpine.data("etalkShow", (audioFiles = []) => ({
     status: null,
     wait: true,
+    showTranscript: true,
     audioFiles: audioFiles,
     currentSnd: 0,
+
     init() {
         // console.log("I am called automatically");
         setTimeout(() => {
-            this.play();
+         //   this.play();
         }, 300);
     },
 
@@ -49,6 +51,9 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
     },
     startedPlay() {
         console.log("startedPlay");
+        //$("html, body").animate({scrollTop: $("#a" + currentSnd).offset().top - 50}, 1e3)
+        // TODO: find top position of current transcript
+        //window.scrollTo({top: this.currentSnd*50, behavior: 'smooth'});
     },
     endedPlay() {
         console.log("endedPlay");
@@ -122,6 +127,21 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
         //     e.stopPropagation();
         //     openLinkinTab($(this).attr("href"))
         // })
+    },
+
+    toggleMode() {
+        this.showTranscript = !this.showTranscript;
+
+        // if ($("#viz").offset().left < 0) {
+        //     $("#bMode").attr("src", "/i/mode_full.png");
+        //     $("#viz").animate({"margin-left": 0});
+        //     $("#dia").animate({left: $("#viz").width() + 60})
+        // } else {
+        //     $("#bMode").attr("src", "/i/mode_list.png");
+        //     $("#viz").animate({"margin-left": -($("#viz").width() + 60)});
+        //     $("#dia").animate({left: 0})
+        // }
+        // return !1
     },
 }));
 
