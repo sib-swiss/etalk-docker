@@ -58,7 +58,7 @@ select:invalid {
 
 body {
     @apply bg-gray-100;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Lucida Grande", Verdana, sans-serif;
 }
 
 h1 {
@@ -74,4 +74,89 @@ p {
 
 a {
     @apply text-blue-500;
+}
+
+#wait {
+    @apply bg-black opacity-80 absolute top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8;
+}
+#wait > header {
+    @apply w-1/2;
+}
+#wait > header h1 {
+    @apply text-3xl font-semibold;
+}
+
+#wait > header h2 {
+    @apply text-2xl font-semibold;
+}
+#wait > header a.vidPlay {
+    top: 150px;
+    left: 50%;
+    display: block;
+    margin-left: -100px;
+    margin-top: -100px;
+    width: 200px;
+    height: 200px;
+    border: 12.5px solid #fff;
+    border-radius: 200px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
+    background: rgba(128, 128, 128, 0.3);
+    position: relative;
+    color: transparent;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#wait > header a.vidPlay:after {
+    content: "";
+    position: absolute;
+    left: 60px;
+    top: 40px;
+    border-top: 47px solid transparent;
+    border-bottom: 47px solid transparent;
+    border-left: 88px solid #fff;
+}
+#wait > header a.vidPlay:hover {
+    box-shadow: 0 0 80px #aaa;
+}
+#wait > nav {
+    @apply w-2/5;
+}
+#wait > nav h1 {
+    @apply text-xl font-semibold;
+}
+#wait > nav a {
+    @apply block text-white no-underline text-sm;
+}
+
+#controls img.btn {
+    padding: 4px;
+    // width: 16px;
+    // height: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+#controls img.btn:hover {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#viz {
+    @apply p-5 mt-7;
+}
+#viz > div.sound h2 {
+    @apply text-2xl font-bold my-5;
+}
+
+#viz > div.sound {
+    @apply text-sm cursor-pointer hover:bg-blue-300 p-2;
+}
+
+#viz > div.sound.current {
+    @apply font-bold;
+    border-left: 3px solid #c00;
 }
