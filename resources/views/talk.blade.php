@@ -56,7 +56,7 @@
 
 
         <div>
-            <header class="fixed w-full bg-white flex justify-between py-2 px-4 shadow-xl">
+            <header class="fixed w-full bg-white flex justify-between py-2 px-4 shadow-xl top-0">
                 @if (!request()->embed)
                     <nav class="opacity-30">
                         <a href="{{ route('home') }}">
@@ -73,11 +73,11 @@
                     <img src="{{ url('i/share.png') }}" id="bShare" class="btn" alt="Share"
                         title="Partager / Intégrer" />
 
-                    <img src="{{ url('i/audio_mute.png') }}" ù class="btn" alt="Mute" @click="toggleMute"
+                    <img src="{{ url('i/audio_mute.png') }}" class="btn" alt="Mute" @click="toggleMute"
                         title="Activer/Couper le son" />
 
-                    <img src="{{ url('i/mode_full.png') }}" @click="toggleMode" class="btn" alt="Transcript"
-                        title="Afficher/Masquer le transcript" />
+                    <img :src="showTranscript ? '{{ url('i/mode_full.png') }}' : '{{ url('i/mode_list.png') }}'"
+                        @click="toggleMode" class="btn" alt="Transcript" title="Afficher/Masquer le transcript" />
 
                     <img src="{{ url('i/prev.png') }}" @click="prev" class="btn" alt="◀︎◀︎" title="Précédent" />
 
@@ -95,25 +95,28 @@
 
 
 
-            <div style="background-image: url('{{ url('i/bg_dia.png') }}') " class="flex">
+            <div style="background-image: url('{{ url('i/bg_dia.png') }}') " class="lg:flex"
+                :class=" wait ? 'blur-sm' : ''">
 
-                <div id="viz" x-ref="viz" class="w-1/4 bg-white p-6" x-show="showTranscript" x-transition
-                    x-transition.duration.500ms>
+                <div id="viz" x-ref="viz" :class="showTranscript ? 'withTranscript' : 'withOutTranscript'">
                     @foreach ($talk->sounds as $i => $sound)
                         <div class="sound" :class=" currentSnd == {{ $i }} ? 'current' : ''"
-                            @click="setCurrentSnd({{ $i }}); play()">
+                            x-ref="sound_{{ $i }}" @click="setCurrentSnd({{ $i }}); play()">
                             @if ($sound->chaptering === 'section')
                                 <h2>{{ $sound->section_title }}</h2>
                             @endif
+
+                            <figure class="sm:hidden mt-10 mb-2">
+                                <img src="{{ url('storage/tmp/' . $sound->file) }}" alt="">
+                                <figcaption></figcaption>
+                            </figure>
                             {{ $sound->text }}
                         </div>
                     @endforeach
                 </div>
 
 
-                <div class="p-4 flex flex-col justify-between h-screen "
-                    :class="showTranscript ? 'w-3/4 left-1/4 fixed top-10' : 'w-full mt-10'" x-transition
-                    x-transition.duration.500ms>
+                <div id="dia" :class="showTranscript ? 'withTranscript' : 'withOutTranscript'">
                     <div class="text-center ">
                         <figure class="inline-block ">
                             <img x-ref="suondFigure" src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}"
@@ -121,10 +124,10 @@
                             <figcaption></figcaption>
                         </figure>
                     </div>
-                    <div class="bg-white mb-10 rounded-sm p-4 flex">
-                        <span>References</span>
-                        <a class="flex" href="{{ $talk->sounds[0]->entities }}">
-                            <img src="{{ url('i/link.png') }}" alt="">
+                    <div class="bg-white mb-12 rounded p-0 text-center text-gray-500 text-sm">
+                        <span class="absolute left-0">References</span>
+                        <a href="{{ $talk->sounds[0]->entities }}">
+                            <img src="{{ url('i/link.png') }}" class="inline" alt="">
                             https:
                         </a>
                     </div>

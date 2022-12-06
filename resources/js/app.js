@@ -15,8 +15,8 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
     init() {
         // console.log("I am called automatically");
         setTimeout(() => {
-         //   this.play();
-        }, 300);
+            this.play();
+        }, 100);
     },
 
     play() {
@@ -53,7 +53,9 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
         console.log("startedPlay");
         //$("html, body").animate({scrollTop: $("#a" + currentSnd).offset().top - 50}, 1e3)
         // TODO: find top position of current transcript
-        //window.scrollTo({top: this.currentSnd*50, behavior: 'smooth'});
+        let top = this.$refs["sound__" + this.currentSnd];
+        console.log("top", top, this.currentSnd, this.$refs);
+        // window.scrollTo({top: top, behavior: 'smooth'});
     },
     endedPlay() {
         console.log("endedPlay");

@@ -30,23 +30,19 @@
 
     @livewireScripts
 
-
-    <footer class="bg-gray-800 text-sm py-4 text-gray-400 fixed-bottom">
-        <div class="container mx-auto flex justify-between">
-
-            <div>
-                DH+ group, SIB, Lausanne
+    @if (Route::currentRouteName() !== 'talk.show')
+        <footer class="bg-gray-800 text-sm py-4 text-gray-400 fixed-bottom">
+            <div class="container mx-auto flex justify-between">
+                <div>
+                    DH+ group, SIB, Lausanne
+                </div>
+                <div>
+                    <a href="{{ route('about') }}">About</a>
+                    <a href="{{ route('contact') }}">Contact</a>
+                </div>
             </div>
-            <div>
-                <a href="{{ route('about') }}">About</a>
-
-                <a href="{{ route('contact') }}">Contact</a>
-
-            </div>
-
-        </div>
-    </footer>
-
+        </footer>
+    @endif
 </body>
 
 </html>

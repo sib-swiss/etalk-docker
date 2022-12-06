@@ -76,7 +76,6 @@ a {
     @apply text-blue-500;
 }
 
-
 #wait {
     @apply bg-black opacity-80 absolute top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8 flex;
 }
@@ -147,8 +146,17 @@ a {
 }
 
 #viz {
-    @apply p-5 mt-7;
+    @apply p-5 mt-7 bg-white transition-all duration-700 w-full
+        sm:w-1/2
+        lg:w-1/4;
 }
+#viz.withTranscript {
+    @apply ml-0;
+}
+#viz.withOutTranscript {
+    @apply -ml-[25%];
+}
+
 #viz > div.sound h2 {
     @apply text-2xl font-bold my-5;
 }
@@ -160,4 +168,17 @@ a {
 #viz > div.sound.current {
     @apply font-bold;
     border-left: 3px solid #c00;
+}
+
+#dia {
+    @apply hidden p-1  flex-col justify-between h-screen  top-16 transition-all duration-700 
+        sm:flex sm:fixed sm:w-1/2
+        lg:w-3/4;
+}
+#dia.withTranscript {
+    @apply sm:left-1/2 sm:w-1/2
+        lg:left-1/4 lg:w-3/4 ;
+}
+#dia.withOutTranscript {
+    @apply w-full left-0;
 }
