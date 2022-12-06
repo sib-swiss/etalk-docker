@@ -162,7 +162,7 @@ a {
 }
 
 #viz > div.sound {
-    @apply text-sm cursor-pointer hover:bg-blue-300 p-2;
+    @apply text-base cursor-pointer hover:bg-blue-300 p-2;
 }
 
 #viz > div.sound.current {

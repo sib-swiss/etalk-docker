@@ -15,7 +15,7 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
     init() {
         // console.log("I am called automatically");
         setTimeout(() => {
-            this.play();
+            //this.play();
         }, 100);
     },
 
@@ -97,10 +97,24 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
         this.$refs.player.src =
             "/storage/data/" + audioFiles[this.currentSnd].name;
 
-        // set current class in relative VIZ > div
+        if (
+            this.$refs.suondFigure.src !=
+            "/storage/tmp/" +
+                encodeURIComponent(audioFiles[this.currentSnd].file)
+        ) {
+            this.$refs.suondFigure.classList.add("opacity-0");
+            setTimeout(() => {
+                this.$refs.suondFigure.src =
+                    "/storage/tmp/" +
+                    encodeURIComponent(audioFiles[this.currentSnd].file);
+                this.$refs.suondFigure.classList.remove("opacity-0");
+            }, 700);
+        }
 
-        this.$refs.suondFigure.src =
-            "/storage/tmp/" + audioFiles[this.currentSnd].file;
+        // const element = document.getElementById("box");
+        // this.$refs["sound_" + soundIndex].scrollIntoView();
+        let top = this.$refs["sound_" + soundIndex].offsetTop - 48;
+        window.scrollTo({ top: top, behavior: "smooth" });
 
         // currentSnd = e;
         // location.hash = e;

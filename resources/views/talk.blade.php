@@ -100,8 +100,9 @@
 
                 <div id="viz" x-ref="viz" :class="showTranscript ? 'withTranscript' : 'withOutTranscript'">
                     @foreach ($talk->sounds as $i => $sound)
-                        <div class="sound" :class=" currentSnd == {{ $i }} ? 'current' : ''"
-                            x-ref="sound_{{ $i }}" @click="setCurrentSnd({{ $i }}); play()">
+                        <div class="sound" data-debug="id_{{ $sound->id }}"
+                            :class=" currentSnd == {{ $i }} ? 'current' : ''" x-ref="sound_{{ $i }}"
+                            @click="setCurrentSnd({{ $i }}); play()">
                             @if ($sound->chaptering === 'section')
                                 <h2>{{ $sound->section_title }}</h2>
                             @endif
@@ -118,8 +119,10 @@
 
                 <div id="dia" :class="showTranscript ? 'withTranscript' : 'withOutTranscript'">
                     <div class="text-center ">
-                        <figure class="inline-block ">
-                            <img x-ref="suondFigure" src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}"
+                        <figure class="inline-block">
+                            <img x-ref="suondFigure"
+                                class="transition-opacity duration-700"
+                                src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}"
                                 alt="">
                             <figcaption></figcaption>
                         </figure>
