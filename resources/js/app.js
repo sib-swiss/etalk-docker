@@ -11,25 +11,20 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
     showTranscript: true,
     audioFiles: audioFiles,
     currentSnd: 0,
+    currentUrl: "",
 
     init() {
+        this.currentUrl = location.href + "#0";
         // console.log("I am called automatically");
-        setTimeout(() => {
-            //this.play();
-        }, 100);
+        // setTimeout(() => {
+        //     //this.play();
+        // }, 100);
     },
 
     play() {
         this.wait = false;
         this.status = "play";
-
         this.$refs.player.play();
-        // $("#bPlay").hide();
-        // document.getElementById("bPause").style.display = "inline";
-        // player.play();
-        // $("body.viewer").removeClass("paused");
-        // $("#wait").fadeOut(function () {
-        // });
     },
     stop() {
         this.wait = true;
@@ -41,28 +36,20 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
         this.$refs.player.pause();
     },
     canplay() {
-        console.log("canplay");
         this.status = "canplay";
-        // document.getElementById('loading').style.display='none';"
     },
     loadstart() {
-        console.log("loadstart");
-        // document.getElementById('loading').style.display='inline';"
+        // console.log("loadstart");
     },
     startedPlay() {
-        console.log("startedPlay");
-        //$("html, body").animate({scrollTop: $("#a" + currentSnd).offset().top - 50}, 1e3)
-        // TODO: find top position of current transcript
-        let top = this.$refs["sound__" + this.currentSnd];
-        console.log("top", top, this.currentSnd, this.$refs);
-        // window.scrollTo({top: top, behavior: 'smooth'});
+        // console.log("startedPlay");
     },
     endedPlay() {
-        console.log("endedPlay");
+        // console.log("endedPlay");
         this.next();
     },
     errorHandler() {
-        console.log("errorHandler");
+        // console.log("errorHandler");
         // alert('The sound file \''+this.src+'\' could not be loaded.')
     },
     toggleMute() {
@@ -94,6 +81,7 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
     setCurrentSnd(soundIndex) {
         this.currentSnd = soundIndex;
         location.hash = soundIndex;
+        this.currentUrl = location.href;
         this.$refs.player.src =
             "/storage/data/" + audioFiles[this.currentSnd].name;
 
@@ -111,53 +99,12 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
             }, 500);
         }
 
-        // const element = document.getElementById("box");
-        // this.$refs["sound_" + soundIndex].scrollIntoView();
         let top = this.$refs["sound_" + soundIndex].offsetTop - 48;
         window.scrollTo({ top: top, behavior: "smooth" });
-
-        // currentSnd = e;
-        // location.hash = e;
-        // player.src = "/data/" + audioFiles[currentSnd].snd;
-        // $("#viz a").removeClass("current");
-        // $("#a" + currentSnd).addClass("current");
-        // "/tmp/" + audioFiles[currentSnd]["pict"] != $("#diaPict").attr("src") && $("#dia>figure").fadeOut(kFadeDuration, function () {
-        //     var e;
-        //     if (audioFiles[currentSnd].pict !== "") {
-        //         $("#diaPict").attr("src", "/tmp/" + audioFiles[currentSnd].pict);
-        //         e = "";
-        //         audioFiles[currentSnd].pict_cred.length > 0 ? e += "© " + audioFiles[currentSnd].pict_cred : e += audioFiles[currentSnd].pict_cred;
-        //         audioFiles[currentSnd]["pict_link"] != "" && (e += '<br/><a href="' + audioFiles[currentSnd].pict_link + '" target="_blank">' + audioFiles[currentSnd].pict_link + "</a>");
-        //         $("#dia>figure>figcaption").html(e);
-        //         $("#dia>figure").fadeIn()
-        //     }
-        // });
-        // $("#links").fadeOut(kFadeDuration, function () {
-        //     if (audioFiles[currentSnd].link !== "") {
-        //         $("#links").html(audioFiles[currentSnd].link);
-        //         $("#links").fadeIn()
-        //     }
-        // });
-        // $("#links a.entity").bind("click touchstart", function (e) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     openLinkinTab($(this).attr("href"))
-        // })
     },
 
     toggleMode() {
         this.showTranscript = !this.showTranscript;
-
-        // if ($("#viz").offset().left < 0) {
-        //     $("#bMode").attr("src", "/i/mode_full.png");
-        //     $("#viz").animate({"margin-left": 0});
-        //     $("#dia").animate({left: $("#viz").width() + 60})
-        // } else {
-        //     $("#bMode").attr("src", "/i/mode_list.png");
-        //     $("#viz").animate({"margin-left": -($("#viz").width() + 60)});
-        //     $("#dia").animate({left: 0})
-        // }
-        // return !1
     },
 }));
 

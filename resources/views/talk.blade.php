@@ -112,33 +112,29 @@
                 </audio>
             </div>
         </div>
-    </div>
 
 
 
 
 
-
-
-    <!-- Modal SHARE -->
-    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="shareUrlModal" tabindex="-1" aria-labelledby="shareUrlModalLabel" aria-hidden="true">
-        <div class="modal-dialog relative w-auto pointer-events-none">
-            <div
-                class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-
-                <div class="modal-body relative p-4">
-
-                    <div class="flex items-center">
-                        <div class="pr-3">URL:</div>
-                        <div class="grow">
-                            <input class="w-full" type="text" value="{{ url()->current() }}" readonly="readonly">
+        <!-- Modal SHARE -->
+        <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+            id="shareUrlModal" tabindex="-1" aria-labelledby="shareUrlModalLabel" aria-hidden="true">
+            <div class="modal-dialog relative w-auto pointer-events-none">
+                <div
+                    class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                    <div class="modal-body relative p-4">
+                        <div class="flex items-center">
+                            <div class="pr-3">URL:</div>
+                            <div class="grow">
+                                <input class="w-full" type="text" x-model="currentUrl" readonly="readonly">
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
+
+
     </div>
 @endsection
