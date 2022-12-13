@@ -3,21 +3,25 @@
 @section('content')
     <div x-data="etalkShow({{ $talk->sounds->map->only('file', 'name') }})">
 
-        <div id="wait" x-show="wait" x-transition x-transition.duration.500ms>
+        <div id="wait" :class="wait ? 'wait' : 'dontWait'">
+            <div class="flex">
+                <header>
+                    <h1>{{ $talk->title }}</h1>
+                    <h2>{{ $talk->author }} - {{ $talk->date->format('d.m.Y') }}</h2>
+                    <a @click="play()" href="#0" class="vidPlay">▶</a>
+                </header>
+                <nav>
+                    <h2>Sommaire</h2>
+                    @foreach ($talk->sounds as $i => $sound)
+                        @if ('section' === $sound->chaptering)
+                            <a href="#{{ $i }}"
+                                @click="setCurrentSnd({{ $i }}); play()">{{ $sound->section_title }}</a>
+                        @endif
+                    @endforeach
+                </nav>
 
-            <header>
-                <h1>{{ $talk->title }}</h1>
-                <h2>{{ $talk->author }} - {{ $talk->date->format('d.m.Y') }}</h2>
-                <a @click="play()" href="#0" class="vidPlay">▶</a>
-            </header>
-            <nav>
-                <h2>Sommaire</h2>
-                @foreach ($talk->sounds as $i => $sound)
-                    @if ('section' === $sound->chaptering)
-                        <a href="#{{ $i }}">{{ $sound->section_title }}</a>
-                    @endif
-                @endforeach
-            </nav>
+            </div>
+
         </div>
 
 
@@ -56,7 +60,7 @@
 
 
         <div>
-            <header class="fixed w-full bg-white flex justify-between py-2 px-4 shadow-xl top-0">
+            <header class="fixed w-full bg-white flex justify-between py-2 px-4 shadow-xl top-0 z-10">
                 @if (!request()->embed)
                     <nav class="opacity-30">
                         <a href="{{ route('home') }}">
@@ -120,10 +124,8 @@
                 <div id="dia" :class="showTranscript ? 'withTranscript' : 'withOutTranscript'">
                     <div class="text-center ">
                         <figure class="inline-block">
-                            <img x-ref="suondFigure"
-                                class="transition-opacity duration-700"
-                                src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}"
-                                alt="">
+                            <img x-ref="suondFigure" class="transition-opacity duration-5"
+                                src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}" alt="">
                             <figcaption></figcaption>
                         </figure>
                     </div>

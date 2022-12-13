@@ -77,19 +77,27 @@ a {
 }
 
 #wait {
-    @apply bg-black opacity-80 absolute top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8 flex;
+    @apply bg-black fixed top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8 transition-all duration-700;
 }
-#wait > header {
+
+#wait.wait {
+    @apply opacity-60;
+}
+#wait.dontWait {
+    @apply opacity-0 -z-10;
+}
+
+#wait header {
     @apply w-1/2;
 }
-#wait > header h1 {
+#wait header h1 {
     @apply text-3xl font-semibold;
 }
 
-#wait > header h2 {
+#wait header h2 {
     @apply text-2xl font-semibold;
 }
-#wait > header a.vidPlay {
+#wait header a.vidPlay {
     top: 150px;
     left: 50%;
     display: block;
@@ -111,7 +119,7 @@ a {
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-#wait > header a.vidPlay:after {
+#wait header a.vidPlay:after {
     content: "";
     position: absolute;
     left: 60px;
@@ -120,16 +128,16 @@ a {
     border-bottom: 47px solid transparent;
     border-left: 88px solid #fff;
 }
-#wait > header a.vidPlay:hover {
+#wait header a.vidPlay:hover {
     box-shadow: 0 0 80px #aaa;
 }
-#wait > nav {
+#wait nav {
     @apply w-2/5;
 }
-#wait > nav h1 {
+#wait nav h1 {
     @apply text-xl font-semibold;
 }
-#wait > nav a {
+#wait nav a {
     @apply block text-white no-underline text-sm;
 }
 
@@ -171,13 +179,13 @@ a {
 }
 
 #dia {
-    @apply hidden p-1  flex-col justify-between h-screen  top-16 transition-all duration-700 
+    @apply hidden p-1  flex-col justify-between h-screen  top-16 transition-all duration-500 
         sm:flex sm:fixed sm:w-1/2
         lg:w-3/4;
 }
 #dia.withTranscript {
     @apply sm:left-1/2 sm:w-1/2
-        lg:left-1/4 lg:w-3/4 ;
+        lg:left-1/4 lg:w-3/4;
 }
 #dia.withOutTranscript {
     @apply w-full left-0;

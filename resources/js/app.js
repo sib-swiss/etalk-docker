@@ -108,7 +108,7 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
                     "/storage/tmp/" +
                     encodeURIComponent(audioFiles[this.currentSnd].file);
                 this.$refs.suondFigure.classList.remove("opacity-0");
-            }, 700);
+            }, 500);
         }
 
         // const element = document.getElementById("box");
