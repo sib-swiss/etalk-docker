@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SoundController;
 use App\Http\Controllers\TalkController;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
@@ -64,4 +65,6 @@ Route::middleware('auth')->group(function (): void {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+
+    Route::resource('sound', SoundController::class);
 });

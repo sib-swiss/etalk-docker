@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -19,5 +20,17 @@ class Sound extends Model implements HasMedia
     public function talk()
     {
         return $this->belongsTo(Talk::class);
+    }
+
+    /**
+     * Get file path of mp3 from storage/app/public/data
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function filepath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->talk->name.'/'.$this->name,
+        );
     }
 }
