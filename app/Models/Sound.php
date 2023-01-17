@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Storage;
 
 class Sound extends Model implements HasMedia
 {
@@ -30,7 +31,19 @@ class Sound extends Model implements HasMedia
     protected function filepath(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->talk->name.'/'.$this->name,
+            get: fn () => 'talks/'.$this->talk_id.'/'.$this->name,
         );
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::deleted(function ($model) {
+            Storage::delete('public/'.$model->filepath);
+        });
     }
 }

@@ -20,7 +20,7 @@ class CreateSoundsTable extends Migration
             $table->string('name');
             $table->text('text');
             $table->enum('type', ['explanation', 'quotation'])->default('explanation');
-            $table->string('entities');
+            $table->string('entities')->nullable();
             $table->string('file');
             $table->string('file_credits')->default('Creative Commons Attribution - Pas dâ€™Utilisation Commerciale - Partage dans les MÃªmes Conditions 3.0 Suisse');
             $table->string('file_link')->default('http://creativecommons.org/licenses/by-nc-sa/3.0/ch/deed.fr');

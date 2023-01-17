@@ -8,6 +8,7 @@ use App\Models\Sound;
 use App\Models\Talk;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
+use Storage;
 
 class SoundSeeder extends Seeder
 {
@@ -28,8 +29,10 @@ class SoundSeeder extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
             if (! $firstline) {
                 $talk = Talk::firstWhere('dir', $data[1]);
+
+                $namePath = explode('/', $data['0']);
                 $sound = Sound::create([
-                    'name' => $data['0'],
+                    'name' => $namePath['1'],
                     'talk_id' => $talk->id,
                     'text' => $data['2'],
                     'type' => $data['3'],
@@ -41,12 +44,22 @@ class SoundSeeder extends Seeder
                     'section_title' => $data['9'],
                 ]);
 
+                // cover
                 $filePath = storage_path('app/public/tmp/'.$data['5']);
                 if (trim($data['5']) && File::exists($filePath)) {
                     // echo "\n" . $filePath;
                     $sound->addMedia($filePath)
                         ->preservingOriginal()
                         ->toMediaCollection();
+                }
+
+                // audio
+                $audioStoragePath = '/public/data/'.$data['0'];
+                if (Storage::exists($audioStoragePath)) {
+                    Storage::copy(
+                        $audioStoragePath,
+                        "{$talk->storagepath}/{$namePath[1]}"
+                    );
                 }
             }
             $firstline = false;

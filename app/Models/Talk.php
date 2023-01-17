@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class Talk extends Model
 {
@@ -29,6 +31,13 @@ class Talk extends Model
         return $this->hasMany(Sound::class);
     }
 
+    protected function storagepath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => "public/talks/{$this->id}",
+        );
+    }
+
     /**
      * Scope a query to search by criteria.
      *
@@ -43,6 +52,23 @@ class Talk extends Model
             $query->orWhereHas('sounds', function ($query) use ($criteria): void {
                 $query->where('text', 'like', '%'.$criteria.'%');
             });
+        });
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($model) {
+            Storage::makeDirectory($model->storagepath);
+            Storage::setVisibility($model->storagepath, 'public');
+        });
+
+        static::deleted(function ($model) {
+            $model->sounds->each->delete();
         });
     }
 }

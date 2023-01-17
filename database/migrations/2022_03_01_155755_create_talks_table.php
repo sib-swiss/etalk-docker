@@ -15,7 +15,7 @@ class CreateTalksTable extends Migration
     {
         Schema::create('talks', function (Blueprint $table) {
             $table->id();
-            $table->string('dir', 50)->unique();
+            $table->string('dir', 50)->nullable();
             $table->string('title');
             $table->string('author');
             $table->date('date');
@@ -24,6 +24,9 @@ class CreateTalksTable extends Migration
             $table->string('external_id')->default('');
             $table->boolean('published')->default(false);
         });
+
+        Storage::makeDirectory('public/talks');
+        Storage::setVisibility('public/talks', 'public');
     }
 
     /**
