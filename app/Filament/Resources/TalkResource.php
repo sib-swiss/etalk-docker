@@ -8,6 +8,7 @@ use App\Filament\Resources\TalkResource\Pages;
 use App\Filament\Resources\TalkResource\RelationManagers\SoundsRelationManager;
 use App\Models\Talk;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -29,6 +30,15 @@ class TalkResource extends Resource
                 Forms\Components\DatePicker::make('date'),
                 Forms\Components\TextInput::make('theme'),
                 Forms\Components\TextInput::make('duration'),
+                FileUpload::make('sounds')
+                    ->preserveFilenames()
+                    ->acceptedFileTypes(['audio/mpeg'])
+                    ->directory('uploaded_sounds')
+                    ->multiple()
+                    ->minSize(10)
+                    ->maxSize(1024 * 5)
+                    ->maxFiles(50)
+                    ->enableOpen(),
             ]);
     }
 

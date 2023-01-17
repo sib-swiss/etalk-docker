@@ -64,7 +64,7 @@ class Talk extends Model
     {
         static::created(function ($model) {
             Storage::makeDirectory($model->storagepath);
-            Storage::setVisibility($model->storagepath, 'public');
+            chmod(storage_path('app/'.$model->storagepath), 0777);
         });
 
         static::deleted(function ($model) {

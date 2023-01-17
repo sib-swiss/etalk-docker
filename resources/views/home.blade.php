@@ -15,11 +15,11 @@
             <article class="container mx-auto flex justify-start mb-10 bg-white p-6">
                 <div class="w-1/4">
                     <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}" alt="image">
+                        <img class="w-full" src="{{ $talk->sounds[0]->getFirstMediaUrl() }}" alt="image">
                     </a>
                 </div>
 
-                <div class="pt-1 px-6 flex-grow">
+                <div class="pt-1 px-6 w-3/4">
                     <h2 class="text-3xl font-weight-bolder mb-2">
                         <a href="{{ route('talk.show', $talk) }}" target="_blank" rel="noopener noreferrer">
                             {{ $talk->title }}

@@ -26,7 +26,7 @@ class CreateTalksTable extends Migration
         });
 
         Storage::makeDirectory('public/talks');
-        Storage::setVisibility('public/talks', 'public');
+        chmod(storage_path('app/public/talks'), 0777);
     }
 
     /**

@@ -78,7 +78,7 @@
                             @endif
 
                             <figure class="sm:hidden mt-10 mb-2">
-                                <img src="{{ url('storage/tmp/' . $sound->file) }}" alt="">
+                                <img src="{{ $sound->getFirstMediaUrl() }}" alt="">
                                 <figcaption></figcaption>
                             </figure>
                             {{ $sound->text }}
@@ -91,7 +91,7 @@
                     <div class="text-center ">
                         <figure class="inline-block">
                             <img x-ref="suondFigure" class="transition-opacity duration-5"
-                                src="{{ url('storage/tmp/' . $talk->sounds[0]->file) }}" alt="">
+                                src="{{ $talk->sounds[0]->getFirstMediaUrl() }}" alt="">
                             <figcaption></figcaption>
                         </figure>
                     </div>
@@ -105,10 +105,10 @@
                 </div>
 
 
-                <audio x-ref="player" preload="auto" src="{{ url('storage/data/' . $talk->sounds[0]->name) }}"
+                <audio x-ref="player" preload="auto" src="{{ url('storage/' . $talk->sounds[0]->filepath) }}"
                     x-on:error="errorHandler" x-on:ended="endedPlay" x-on:loadstart="loadstart" x-on:canplay="canplay"
                     x-on:play="startedPlay">
-                    <source src="{{ url('storage/data/' . $talk->sounds[0]->name) }}" type="audio/mp3">HTML5 Only!
+                    <source src="{{ url('storage/' . $talk->sounds[0]->filepath) }}" type="audio/mp3">HTML5 Only!
                 </audio>
             </div>
         </div>
