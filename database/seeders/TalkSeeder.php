@@ -26,7 +26,7 @@ class TalkSeeder extends Seeder
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
             if (! $firstline) {
-                Talk::create([
+                $talk = Talk::create([
                     'dir' => $data['0'],
                     'title' => $data['1'],
                     'author' => $data['2'],
@@ -36,6 +36,7 @@ class TalkSeeder extends Seeder
                     'external_id' => $data['6'],
                     'published' => $data['7'],
                 ]);
+                $talk->seedMetadata();
             }
             $firstline = false;
         }

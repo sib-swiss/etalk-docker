@@ -55,6 +55,55 @@ class Talk extends Model
         });
     }
 
+    public function metadatas()
+    {
+        return $this->hasMany(Metadata::class);
+    }
+
+    public function saveMetadata()
+    {
+        $json = Metadata::getJson($this->external_id);
+
+        return Storage::put($this->storagepath.'/metadata.json', $json);
+    }
+
+    public function seedMetadata()
+    {
+        if (! $this->external_id) {
+            return;
+        }
+        if (! Storage::exists($this->storagepath.'/metadata.json')) {
+            self::saveMetadata($this->external_id);
+        }
+        $json = Storage::get($this->storagepath.'/metadata.json');
+        $metadatas = [];
+        $collection = Metadata::jsonToCollection($json);
+        // dd($collection);
+        foreach ($collection as $attributes) {
+            $metadatas[] = $this->metadatas()->create($attributes);
+        }
+
+        return $metadatas;
+    }
+
+    /**
+     * Scope a query to search a term.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  Sting  $term
+     * @return void
+     */
+    public function scopeSearch($query, string $term)
+    {
+        return $query->where('title', 'like', '%'.$term.'%')
+            ->orWhere('author', 'like', '%'.$term.'%')
+            ->orWhere('theme', 'like', '%'.$term.'%')
+            ->orWhere('date', 'like', '%'.$term.'%')
+            ->orWhereHas('metadatas', function ($query) use ($term) {
+                $query->where('value', 'like', '%'.$term.'%');
+            });
+    }
+
     /**
      * The "booted" method of the model.
      *

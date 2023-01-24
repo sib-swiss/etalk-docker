@@ -45,7 +45,7 @@ class SoundSeeder extends Seeder
                 ]);
 
                 // cover
-                $filePath = storage_path('app/public/tmp/'.$data['5']);
+                $filePath = storage_path('app/legacy/tmp/'.$data['5']);
                 if (trim($data['5']) && File::exists($filePath)) {
                     // echo "\n" . $filePath;
                     $sound->addMedia($filePath)
@@ -54,7 +54,7 @@ class SoundSeeder extends Seeder
                 }
 
                 // audio
-                $audioStoragePath = '/public/data/'.$data['0'];
+                $audioStoragePath = '/lecacy/data/'.$data['0'];
                 if (Storage::exists($audioStoragePath)) {
                     Storage::copy(
                         $audioStoragePath,
