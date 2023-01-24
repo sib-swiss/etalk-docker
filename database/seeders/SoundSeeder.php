@@ -54,7 +54,7 @@ class SoundSeeder extends Seeder
                 }
 
                 // audio
-                $audioStoragePath = '/lecacy/data/'.$data['0'];
+                $audioStoragePath = '/legacy/data/'.$data['0'];
                 if (Storage::exists($audioStoragePath)) {
                     Storage::copy(
                         $audioStoragePath,

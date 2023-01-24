@@ -82,19 +82,19 @@ Alpine.data("etalkShow", (audioFiles = []) => ({
         this.currentSnd = soundIndex;
         location.hash = soundIndex;
         this.currentUrl = location.href;
-        this.$refs.player.src =
-            "/storage/data/" + audioFiles[this.currentSnd].name;
 
-        if (
-            this.$refs.suondFigure.src !=
-            "/storage/tmp/" +
-                encodeURIComponent(audioFiles[this.currentSnd].file)
-        ) {
+        let audioFile = audioFiles[this.currentSnd];
+        this.$refs.player.src = "/storage/" + audioFile.filepath;
+
+        let imagePath =
+            "/storage/" +
+            audioFile.id +
+            "/" +
+            encodeURIComponent(audioFile.file);
+        if (this.$refs.suondFigure.src != imagePath) {
             this.$refs.suondFigure.classList.add("opacity-0");
             setTimeout(() => {
-                this.$refs.suondFigure.src =
-                    "/storage/tmp/" +
-                    encodeURIComponent(audioFiles[this.currentSnd].file);
+                this.$refs.suondFigure.src = imagePath;
                 this.$refs.suondFigure.classList.remove("opacity-0");
             }, 500);
         }

@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/welcome', 'welcome')->name('welcome');
 
-Route::get('/', [TalkController::class, 'index'])->name('home');
+Route::any('/', [TalkController::class, 'index'])->name('home');
 Route::get('/talks/{talk}', [TalkController::class, 'show'])->name('talk.show');
 Route::view('/introduction', [SectionController::class, 'introduction'])->name('introduction');
 Route::view('/mode-demploi', [SectionController::class, 'mode-demploi'])->name('mode-demploi');

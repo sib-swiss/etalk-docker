@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div x-data="etalkShow({{ $talk->sounds->map->only('file', 'name') }})">
+    <div x-data="etalkShow({{ $talk->sounds->map->only('id','file', 'filepath') }})">
 
         <div id="wait" :class="wait ? 'wait' : 'dontWait'">
             <div class="flex">

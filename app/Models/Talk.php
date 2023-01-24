@@ -47,10 +47,19 @@ class Talk extends Model
     public function scopeSearchByCriteria($query, string|null $criteria)
     {
         return $query->where(function ($query) use ($criteria): void {
-            $query->where('title', 'like', '%'.$criteria.'%');
+            $query->where('title', 'like', '%'.$criteria.'%')
+                ->orWhere('author', 'like', '%'.$criteria.'%')
+                ->orWhere('theme', 'like', '%'.$criteria.'%')
+                ->orWhere('date', 'like', '%'.$criteria.'%');
+
             // search in sounds text
             $query->orWhereHas('sounds', function ($query) use ($criteria): void {
                 $query->where('text', 'like', '%'.$criteria.'%');
+            });
+
+            // search in metadata
+            $query->orWhereHas('metadatas', function ($query) use ($criteria) {
+                $query->where('value', 'like', '%'.$criteria.'%');
             });
         });
     }
@@ -84,24 +93,6 @@ class Talk extends Model
         }
 
         return $metadatas;
-    }
-
-    /**
-     * Scope a query to search a term.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  Sting  $term
-     * @return void
-     */
-    public function scopeSearch($query, string $term)
-    {
-        return $query->where('title', 'like', '%'.$term.'%')
-            ->orWhere('author', 'like', '%'.$term.'%')
-            ->orWhere('theme', 'like', '%'.$term.'%')
-            ->orWhere('date', 'like', '%'.$term.'%')
-            ->orWhereHas('metadatas', function ($query) use ($term) {
-                $query->where('value', 'like', '%'.$term.'%');
-            });
     }
 
     /**

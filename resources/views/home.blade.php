@@ -6,9 +6,11 @@
     @include('carousel')
 
 
-    <div>
-        Search input
-    </div>
+    <form method="POST" action="{{ route('home') }}">
+        @csrf
+     
+        <input type="text" name="search">
+    </form>
 
     <div>
         @foreach ($talks as $talk)

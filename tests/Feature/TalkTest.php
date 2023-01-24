@@ -27,7 +27,7 @@ final class TalkTest extends TestCase
         }
 
         $metadata = Metadata::inRandomOrder()->first();
-        $talks = Talk::search($metadata->value)
+        $talks = Talk::searchByCriteria($metadata->value)
             ->with('metadatas')
             ->get();
         $this->assertCount(1, $talks);
