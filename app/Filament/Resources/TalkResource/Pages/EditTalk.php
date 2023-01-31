@@ -16,7 +16,13 @@ class EditTalk extends EditRecord
         $sounds = $data['sounds'];
         unset($data['sounds']);
 
+        $reSeedMetadata = $talk->external_id !== $data['external_id'];
+
         $talk->update($data);
+        if ($reSeedMetadata) {
+            $talk->saveMetadata();
+            $talk->seedMetadata();
+        }
 
         foreach ($sounds as $sound) {
             $name = str_replace('uploaded_sounds/', '', $sound);
