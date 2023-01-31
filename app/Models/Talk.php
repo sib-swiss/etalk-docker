@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Nakala;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -69,10 +70,76 @@ class Talk extends Model
         return $this->hasMany(Metadata::class);
     }
 
+    public function getMetaValueByKeyword(string $keyword)
+    {
+        // dd([
+        //     $keyword,
+        //     $this->metadatas()
+        //         ->where('key', 'LIKE', $keyword . "%")
+        //         ->take(5)
+        //         ->get()
+        //         ->toArray(),
+        //     $this->metadatas->pluck('key')
+        // ]);
+        $xxx = $this->metadatas->where('key', $keyword)->first();
+        if ($xxx) {
+            return $xxx->value;
+        }
+
+        return '';
+    }
+
+    public function metadatasTable()
+    {
+        $data = [
+            'Title' => $this->getMetaValueByKeyword('terms#title'),
+            'Author' => $this->getMetaValueByKeyword('terms#creator'),
+            'Created' => $this->getMetaValueByKeyword('terms#created'),
+            'License' => $this->getMetaValueByKeyword('terms#license'),
+            // 'Type' => '', //$this->metadatas->where('key','type'),
+            'Keywords' => $this->metadatas->filter(function ($item) {
+                return str_starts_with($item->key, 'subject');
+            })->pluck('value')->toArray(),
+            'Description' => $this->getMetaValueByKeyword('description'),
+            'Language' => $this->getMetaValueByKeyword('language'),
+            'Http://purl.org/dc/terms/isversionof' => $this->getMetaValueByKeyword('isVersionOf'),
+            'Http://purl.org/dc/terms/ispartof' => $this->getMetaValueByKeyword('isPartOf'),
+            'Http://purl.org/dc/terms/provenance' => $this->getMetaValueByKeyword('provenance'),
+
+        ];
+        // foreach ($this->metadatas as $meta) {
+        //     $explodedKey = explode(".", $meta->key);
+        //     if (in_array($explodedKey[0], [
+        //         // 'isPartOf',
+        //         '@context',
+        //         '@id',
+        //         '@type',
+        //         'hasPart'
+        //     ])) {
+        //         continue;
+        //     }
+        //     if (isset($explodedKey[1])) {
+        //         if (isset($explodedKey[2])) {
+        //             $data[$explodedKey[0]][$explodedKey[1]][$explodedKey[2]] = $meta->value;
+        //         } else {
+        //             $data[$explodedKey[0]][$explodedKey[1]] = $meta->value;
+        //         }
+        //     } else {
+        //         $data[$explodedKey[0]] = $meta->value;
+        //     }
+        // }
+        return $data;
+    }
+
     public function saveMetadata()
     {
         $json = Metadata::getJson($this->external_id);
 
+        $url = json_decode($json)->url;
+        if (strpos($url, 'nakala') !== false) {
+            Nakala::saveMetadata($url, $this->storagepath);
+        }
+        // dd($url);
         return Storage::put($this->storagepath.'/metadata.json', $json);
     }
 
@@ -81,17 +148,25 @@ class Talk extends Model
         if (! $this->external_id) {
             return;
         }
-        if (! Storage::exists($this->storagepath.'/metadata.json')) {
+        if (
+            ! Storage::exists($this->storagepath.'/metadata.json')
+            || (time() - Storage::lastModified($this->storagepath.'/metadata.json') > 60 * 60 * 24) //older than 1 day
+        ) {
             self::saveMetadata($this->external_id);
         }
-        $json = Storage::get($this->storagepath.'/metadata.json');
+
+        $collection = Storage::exists($this->storagepath.'/metadata_nakala.json')
+            ? Nakala::fileToCollection($this->storagepath.'/metadata_nakala.json')
+            : Metadata::fileToCollection($this->storagepath.'/metadata.json');
+
         $metadatas = [];
-        $collection = Metadata::jsonToCollection($json);
         // dd($collection);
         foreach ($collection as $attributes) {
+            // dd($attributes);
+            // logger()->debug(__LINE__ , $attributes);
             $metadatas[] = $this->metadatas()->create($attributes);
         }
-
+        // dd($metadatas);
         return $metadatas;
     }
 

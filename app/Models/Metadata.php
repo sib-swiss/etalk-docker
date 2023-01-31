@@ -7,6 +7,7 @@ use DOMXPath;
 use Http;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class Metadata extends Model
 {
@@ -28,17 +29,14 @@ class Metadata extends Model
         return $json;
     }
 
-    public static function jsonToCollection($json)
+    public static function fileToCollection(string $filePath)
     {
-        if (! is_string($json)) {
-            dd([
-                'not string',
-                $json,
-            ]);
-        }
+        $decodedJson = json_decode(Storage::get($filePath), true);
+
+        // dd($decodedJson);
+
         $attributes = [];
-        $metas = json_decode($json, true);
-        foreach ($metas as $key => $value) {
+        foreach ($decodedJson as $key => $value) {
             if (is_array($value)) {
                 $attributes = array_merge($attributes, self::xxxxxx($key, $value));
             } elseif (is_string($value)) {
@@ -48,8 +46,9 @@ class Metadata extends Model
                 ];
             }
         }
+        // dd($attributes);
 
-        return $attributes;
+        return collect($attributes);
     }
 
     public static function xxxxxx($key, $value)

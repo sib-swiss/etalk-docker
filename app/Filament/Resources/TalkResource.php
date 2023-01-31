@@ -6,6 +6,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TalkResource\Pages;
 use App\Filament\Resources\TalkResource\RelationManagers\SoundsRelationManager;
+use App\Models\Metadata;
 use App\Models\Talk;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -30,6 +31,7 @@ class TalkResource extends Resource
                 Forms\Components\DatePicker::make('date'),
                 Forms\Components\TextInput::make('theme'),
                 Forms\Components\TextInput::make('duration'),
+                Forms\Components\TextInput::make('external_id'),
                 FileUpload::make('sounds')
                     ->preserveFilenames()
                     ->acceptedFileTypes(['audio/mpeg'])
@@ -46,10 +48,10 @@ class TalkResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\BooleanColumn::make('published'),
-                Tables\Columns\TextColumn::make('dir'),
+                Tables\Columns\IconColumn::make('published')->boolean(),
+                // Tables\Columns\TextColumn::make('dir'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('author'),
+                // Tables\Columns\TextColumn::make('author'),
                 Tables\Columns\TextColumn::make('duration'),
             ])
             ->filters([
@@ -60,6 +62,7 @@ class TalkResource extends Resource
     {
         return [
             SoundsRelationManager::class,
+            // Metadata::class
         ];
     }
 

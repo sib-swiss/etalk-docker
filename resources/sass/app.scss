@@ -190,3 +190,16 @@ a {
 #dia.withOutTranscript {
     @apply w-full left-0;
 }
+
+.etalk_button {
+    @apply inline-block bg-[#672d82] text-white px-6 py-2;
+    @apply font-medium leading-tight shadow-md
+     hover:bg-[#4f2b69] hover:shadow-lg 
+     focus:bg-[#4f2b69] focus:shadow-lg focus:outline-none focus:ring-0 
+     active:bg-[#4f2b69] active:shadow-lg 
+     transition duration-150 ease-in-out;
+}
+
+span.searched {
+    @apply bg-yellow-500 font-bold text-white  inline-block px-1;
+}

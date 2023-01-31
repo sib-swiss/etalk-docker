@@ -17,6 +17,7 @@ class TalkController extends Controller
                 ->searchByCriteria($request->search)
                 ->orderBy('date', 'DESC')
                 ->get(),
+            'search' => $request->search,
         ];
 
         return view('home', $data);
