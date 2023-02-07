@@ -1,0 +1,205 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://unpkg.com/tailwindcss/dist/base.css
+ */
+@tailwind base;
+
+/**
+ * Remove the default box-shadow for invalid elements to prevent
+ * inputs in Livewire components showing with a
+ * red border by default in Firefox.
+ *
+ * See: https://github.com/laravel-frontend-presets/tall/issues/7
+ */
+input:invalid,
+textarea:invalid,
+select:invalid {
+    box-shadow: none;
+}
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ */
+
+[x-cloak] {
+    display: none;
+}
+
+body {
+    @apply bg-gray-100;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+}
+
+h1 {
+    @apply text-4xl my-2;
+}
+h2 {
+    @apply text-3xl my-2;
+}
+
+p {
+    @apply my-2;
+}
+
+a {
+    @apply text-blue-500;
+}
+
+#wait {
+    @apply bg-black fixed top-0 left-0 w-full h-full z-50 text-white text-center justify-between py-0 px-8 transition-all duration-700;
+}
+
+#wait.wait {
+    @apply opacity-60;
+}
+#wait.dontWait {
+    @apply opacity-0 -z-10;
+}
+
+#wait header {
+    @apply w-1/2;
+}
+#wait header h1 {
+    @apply text-3xl font-semibold;
+}
+
+#wait header h2 {
+    @apply text-2xl font-semibold;
+}
+#wait header a.vidPlay {
+    top: 150px;
+    left: 50%;
+    display: block;
+    margin-left: -100px;
+    margin-top: -100px;
+    width: 200px;
+    height: 200px;
+    border: 12.5px solid #fff;
+    border-radius: 200px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
+    background: rgba(128, 128, 128, 0.3);
+    position: relative;
+    color: transparent;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#wait header a.vidPlay:after {
+    content: "";
+    position: absolute;
+    left: 60px;
+    top: 40px;
+    border-top: 47px solid transparent;
+    border-bottom: 47px solid transparent;
+    border-left: 88px solid #fff;
+}
+#wait header a.vidPlay:hover {
+    box-shadow: 0 0 80px #aaa;
+}
+#wait nav {
+    @apply w-2/5;
+}
+#wait nav h1 {
+    @apply text-xl font-semibold;
+}
+#wait nav a {
+    @apply block text-white no-underline text-sm;
+}
+
+#controls img.btn {
+    padding: 4px;
+    // width: 16px;
+    // height: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+#controls img.btn:hover {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#viz {
+    @apply p-5 mt-7 bg-white transition-all duration-700 w-full
+        sm:w-1/2
+        lg:w-1/4;
+}
+#viz.withTranscript {
+    @apply ml-0;
+}
+#viz.withOutTranscript {
+    @apply -ml-[25%];
+}
+
+#viz > div.sound h2 {
+    @apply text-2xl font-bold my-5;
+}
+
+#viz > div.sound {
+    @apply text-base cursor-pointer hover:bg-blue-300 p-2;
+}
+
+#viz > div.sound.current {
+    @apply font-bold;
+    border-left: 3px solid #c00;
+}
+
+#dia {
+    @apply hidden p-1  flex-col justify-between h-screen  top-16 transition-all duration-500 
+        sm:flex sm:fixed sm:w-1/2
+        lg:w-3/4;
+}
+#dia.withTranscript {
+    @apply sm:left-1/2 sm:w-1/2
+        lg:left-1/4 lg:w-3/4;
+}
+#dia.withOutTranscript {
+    @apply w-full left-0;
+}
+
+.etalk_button {
+    @apply inline-block bg-[#672d82] text-white px-6 py-2;
+    @apply font-medium leading-tight shadow-md
+     hover:bg-[#4f2b69] hover:shadow-lg 
+     focus:bg-[#4f2b69] focus:shadow-lg focus:outline-none focus:ring-0 
+     active:bg-[#4f2b69] active:shadow-lg 
+     transition duration-150 ease-in-out;
+}
+
+span.searched {
+    @apply bg-yellow-500 font-bold text-white  inline-block px-1;
+}
