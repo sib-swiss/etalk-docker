@@ -27,7 +27,7 @@
             @endphp
             <article class="container mx-auto flex justify-start mb-10 bg-white p-6">
                 <div class="w-1/4">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ route('talk.show', $talk) }}" target="_blank" rel="noopener noreferrer">
                         <img class="w-full" src="{{ $firstSound ? $firstSound->getFirstMediaUrl() : '' }}" alt="image">
                     </a>
                 </div>
@@ -95,7 +95,7 @@
 
 
                     <div class="float-right">
-                        <a class="etalk_button" href="#" target="_blank" rel="noopener noreferrer">Read eTalk</a>
+                        <a class="etalk_button" href="{{ route('talk.show', $talk) }}" target="_blank" rel="noopener noreferrer">Read eTalk</a>
                     </div>
 
                 </div>
