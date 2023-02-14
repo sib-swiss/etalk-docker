@@ -47,6 +47,10 @@ class Talk extends Model
      */
     public function scopeSearchByCriteria($query, string|null $criteria)
     {
+        if (! $criteria) {
+            return $query;
+        }
+
         return $query->where(function ($query) use ($criteria): void {
             $query->where('title', 'like', '%'.$criteria.'%')
                 ->orWhere('author', 'like', '%'.$criteria.'%')
