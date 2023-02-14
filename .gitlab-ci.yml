@@ -3,7 +3,7 @@ stages:
   - testing
   - deploy
 
-image: lorisleiva/laravel-docker:8.1
+image: thecodingmachine/php:8.1-v4-cli
 
 # Variables
 variables:
