@@ -4,7 +4,7 @@ The eTalk, a multimedia editing tool, is the result of collaborative and transdi
 
 The first version of the eTalks code has been developed in 2012-2015 by Frédéric Kaplan and Cyril Bornet (EPFL, CH), in collaboration with Claire Clivaz (Unil, CH), and is available on Github: https://github.com/OZWE/etalk
 
-This new version of the code has been developed by Silvano ALdà and Claire Clivaz, SIB Swiss Institute of Bioinformatics, 2022-2023.
+This new version of the code has been developed by Silvano Aldà and Claire Clivaz, SIB Swiss Institute of Bioinformatics, 2022-2023.
 
 This version of the software has been integrated to SIB GitHub for the SNSF project MARK16: https://mark16.sib.swiss
 
