@@ -83,20 +83,21 @@ deploy_dev:
     - ./vendor/bin/envoy run deploy
   only:
     - dev
-# deploy_prod:
-#   stage: deploy
-#   needs:
-#     - job: composer
-#       artifacts: true
-#   script:
-#     - eval $(ssh-agent -s)
-#     - ssh-add <(echo "$PROD_SSH_PRIVATE_KEY")
-#     - mkdir -p ~/.ssh
-#     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-#     - echo "DEPLOY_PROD_USER=$DEPLOY_PROD_USER" >> .env
-#     - echo "DEPLOY_PROD_HOST=$DEPLOY_PROD_HOST" >> .env
-#     - echo "DEPLOY_PROD_PATH=$DEPLOY_PROD_PATH" >> .env
-#     - ./vendor/bin/envoy run deploy --server=prod
-#   only:
-#     - master
-#   when: manual
+
+deploy_prod:
+  stage: deploy
+  needs:
+    - job: composer
+      artifacts: true
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$PROD_SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo "DEPLOY_PROD_USER=$DEPLOY_PROD_USER" >> .env
+    - echo "DEPLOY_PROD_HOST=$DEPLOY_PROD_HOST" >> .env
+    - echo "DEPLOY_PROD_PATH=$DEPLOY_PROD_PATH" >> .env
+    - ./vendor/bin/envoy run deploy --server=prod
+  only:
+    - master
+  when: manual
