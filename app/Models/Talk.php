@@ -60,7 +60,19 @@ class Talk extends Model
 
             // search in metadata
             $query->orWhereHas('metadatas', function ($query) use ($criteria) {
-                $query->where('value', 'like', '%'.$criteria.'%');
+                if (strtolower($criteria) === 'english') {
+                    $query->where(function ($query) {
+                        $query->where('key', 'language')
+                            ->where('value', 'en');
+                    });
+                } elseif (strtolower($criteria) === 'french') {
+                    $query->where(function ($query) {
+                        $query->where('key', 'language')
+                            ->where('value', 'fr');
+                    });
+                } else {
+                    $query->where('value', 'like', '%'.$criteria.'%');
+                }
             });
         });
     }
