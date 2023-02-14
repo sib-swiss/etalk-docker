@@ -1,24 +1,17 @@
-# VRE etalk
+# eTalk: definition and credits
 
+The eTalk, a multimedia editing tool, is the result of collaborative and transdisciplinary work. It is part of a new form of multimodal digital literacy, while respecting the standards of scientific publishing. It is quotable entirely in details through a share button.
 
-## Summary
-This application is used by the VRE application (see https://gitlab.isb-sib.ch/mark16-vre-group/vre).
-The code has been published here in 2020: https://github.com/sib-swiss/etalk-docker in GNU General Public License v3.0 only (GPL-3.0)
+The first version of the eTalks code has been developed in 2012-2015 by Frédéric Kaplan and Cyril Bornet (EPFL, CH), in collaboration with Claire Clivaz (Unil, CH), and is available on Github: https://github.com/OZWE/etalk
 
-The main directories are :
+This new version of the code has been developed by Silvano ALdà and Claire Clivaz, SIB Swiss Institute of Bioinformatics, 2022-2023.
 
-- conf : configuration directory. The file `_app.conf_TEMPLATE.php` is a template for `conf/_app.conf.php`. As this file is not managed by Git, it must be created directly on the server. 
-- htdocs : the application root.
- 
-## How to install
+This version of the software has been integrated to SIB GitHub for the SNSF project MARK16: https://mark16.sib.swiss
 
-- Pull this repository 
-- Create the MySQL database 
-- Run the DDL script  
-- Create 2 directories under htdocs : data and tmp.
-- Create a file `conf/_app.conf.php` on the model of `conf/_app.conf_TEMPLATE.php`, and edit the DB credentials according the database configuration.
-  
-## How to use
+License: read the summary below.
 
-- Create new folder to open a new series
-- Use /edit/ menu to edit etalks
+## Getting Started
+Local development
+- [Laravel](https://laravel.com/) within docker managed by [Sail](https://laravel.com/docs/master/sail) 
+    - TALL Stack(Tailwindcss, Alpine, Laravel Livewire) (https://github.com/laravel-frontend-presets/tall)
+    - Admin: [Filament] (https://filamentphp.com/)
