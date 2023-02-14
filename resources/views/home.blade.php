@@ -19,6 +19,12 @@
                 </button>
 
             </form>
+
+            @if (isset($search))
+                <h3 class="pt-5 text-3xl">
+                    There are {{ count($talks) }} result(s) for {{ $search }}:
+                </h3>
+            @endif
         </div>
 
         @foreach ($talks as $talk)
@@ -95,7 +101,8 @@
 
 
                     <div class="float-right">
-                        <a class="etalk_button" href="{{ route('talk.show', $talk) }}" target="_blank" rel="noopener noreferrer">Read eTalk</a>
+                        <a class="etalk_button" href="{{ route('talk.show', $talk) }}" target="_blank"
+                            rel="noopener noreferrer">Read eTalk</a>
                     </div>
 
                 </div>
