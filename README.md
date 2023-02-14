@@ -8,7 +8,7 @@ This new version of the code has been developed by Silvano Aldà and Claire Cliv
 
 This version of the software has been integrated to SIB GitHub for the SNSF project MARK16: https://mark16.sib.swiss
 
-License: read the summary below.
+License: GPL-3.0 license.
 
 ## Getting Started
 Local development
