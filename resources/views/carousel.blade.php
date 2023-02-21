@@ -1,11 +1,11 @@
-<div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
-
+<div id="carouselExampleCaptions" class="carousel slide relative " data-bs-ride="carousel">
     <div class="carousel-inner relative w-full overflow-hidden">
         <div class="carousel-item active relative float-left w-full">
             <img src="{{ url(asset('image/Imageunique.jpg')) }}" class="block w-full" alt="..." />
-            <div class="carousel-caption hidden md:block absolute text-center">
-                <h5 class="text-xl">MARK16 eTalks</h5>
-                <p>SNSF project 2018-2023</p>
+            <div
+                class="carousel-caption hidden md:block absolute text-left m-0 bg-gray-900 opacity-70 right-0 left-0 bottom-0 pl-4 font-normal">
+                <h5 class="text-2xl">MARK16 eTalks</h5>
+                <p class="text-sm">SNSF project 2018-2023</p>
             </div>
         </div>
     </div>

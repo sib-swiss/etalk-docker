@@ -17,7 +17,7 @@
                 details (see the <a href="/mode-demploi/">demonstration video</a>).
                 It has been created by an interdisciplinary team in 2012-2015 under the lead of Claire Clivaz (UNIL) and
                 Frédéric Kaplan (EPFL). The present version is an updated version of the software produced by Silvano Aldà
-                (Core-IT, SIB) and Claire Clivaz (DH+,SIB, Lausanne)..</p>
+                (Core-IT, SIB) and Claire Clivaz (DH+,SIB, Lausanne).</p>
             <p>The code for the eTalk programme is available in open source, along with explanations of how to prepare and
                 install eTalks: <a
                     href="https://github.com/sib-swiss/etalk-docker">https://github.com/sib-swiss/etalk-docker</a></p>
