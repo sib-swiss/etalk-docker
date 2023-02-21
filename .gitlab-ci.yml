@@ -3,7 +3,7 @@ stages:
   - testing
   - deploy
 
-image: thecodingmachine/php:8.1-v4-cli
+image: php:8.1-cli
 
 # Variables
 variables:
@@ -20,6 +20,8 @@ composer:
   stage: preparation
   script:
     - php -v
+    - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    - php composer-setup.php
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - cp .env.example .env
     - php artisan key:generate
