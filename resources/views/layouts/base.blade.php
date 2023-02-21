@@ -37,8 +37,8 @@
                     DH+ group, SIB, Lausanne
                 </div>
                 <div>
-                    <a href="{{ route('about') }}">About</a>
-                    <a href="{{ route('contact') }}">Contact</a>
+                    <a class="text-gray-400 hover:text-white " href="{{ route('about') }}">About</a>
+                    <a class="text-gray-400 hover:text-white ml-3" href="{{ route('contact') }}">Contact</a>
                 </div>
             </div>
         </footer>

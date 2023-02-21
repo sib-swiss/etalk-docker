@@ -2,7 +2,7 @@
 
 @section('content')
     @include('navbar')
-    <div class="container mx-auto pt-24 ">
+    <div class="container mx-auto pt-32 ">
         @include('carousel')
     </div>
 

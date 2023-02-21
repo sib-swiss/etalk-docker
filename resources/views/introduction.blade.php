@@ -4,7 +4,7 @@
     @include('navbar')
 
 
-    <div class="bg-gray-100 py-12">
+    <div class="bg-gray-100 pt-32 pb-12">
 
         <div class="container mx-auto">
             <h1>Introduction to MARK16 eTalks</h1>

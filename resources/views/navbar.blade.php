@@ -7,7 +7,7 @@
   items-center
   justify-between
   py-4
-  bg-gray-100
+  bg-gray-200
   text-gray-500
   hover:text-gray-700
   focus:text-gray-700
@@ -49,14 +49,14 @@
         'contact' => 'Contact us',
     ] as $routeName => $text)
                     <li class="nav-item md:p-1">
-                        <a class="nav-link font-bold 
+                        <a class="nav-link font-bold  text-lg
                                     @if (Illuminate\Support\Facades\Route::currentRouteName() === $routeName) text-white bg-[#511C69]
                                     @else
                                         text-gray-500 @endif
                                     hover:text-white hover:bg-[#511C69] 
                                     focus:text-gray-700 
                                     p-3 w-full block
-                                    lg:p-6"
+                                    lg:px-6"
                             href="{{ route($routeName) }}">{{ $text }}</a>
                     </li>
                 @endforeach
