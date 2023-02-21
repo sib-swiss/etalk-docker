@@ -54,7 +54,7 @@
                                     @else
                                         text-gray-500 @endif
                                     hover:text-white hover:bg-[#511C69] 
-                                    focus:text-gray-700 
+                                    focus:text-white
                                     p-3 w-full block
                                     lg:px-6"
                             href="{{ route($routeName) }}">{{ $text }}</a>
