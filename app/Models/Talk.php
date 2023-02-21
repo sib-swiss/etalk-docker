@@ -29,7 +29,7 @@ class Talk extends Model
 
     public function sounds()
     {
-        return $this->hasMany(Sound::class);
+        return $this->hasMany(Sound::class)->orderBy('name');
     }
 
     protected function storagepath(): Attribute
