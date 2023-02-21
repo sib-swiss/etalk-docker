@@ -22,7 +22,7 @@ composer:
     - php -v
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php
-    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - php composer.phar install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - cp .env.example .env
     - php artisan key:generate
     - echo "DEPLOY_SERVER_DEV=$DEPLOY_SERVER_DEV" >> .env
