@@ -22,7 +22,7 @@ RUN dnf -y module list php
 # Enable PHP version 8.1
 RUN dnf -y module reset php
 RUN dnf -y module install php:remi-8.1
-RUN dnf -y install php-gd php-opcache php-xml php-pdo php-fpm php-mbstring php-mysql php-zip
+RUN dnf -y install php-gd php-opcache php-xml php-pdo php-fpm php-mbstring php-mysql php-zip php-posix
 RUN dnf -y install supervisor
 COPY php.ini /etc/php.d/99-sail.ini
 
