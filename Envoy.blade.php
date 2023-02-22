@@ -22,7 +22,11 @@
     $app_dir = $server === 'prod' ?  $deploy_path_prod :  $deploy_path_dev ;
     
     $server = isset($server) ? $server : 'dev' ;
-
+    var_dump([
+        $server,
+        $server_dev 
+    ]);
+    exit();
 @endsetup
 
 
