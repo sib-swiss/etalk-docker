@@ -3,9 +3,12 @@
         <div class="carousel-item active relative float-left w-full">
             <img src="{{ url(asset('image/Imageunique.jpg')) }}" class="block w-full" alt="..." />
             <div
-                class="carousel-caption hidden md:block absolute text-left m-0 bg-gray-900 opacity-70 right-0 left-0 bottom-0 pl-4 font-normal">
+                class="carousel-caption hidden absolute text-left m-0 bg-gray-900 opacity-70 right-0 left-0 bottom-0 pl-4 font-normal
+                    lg:block
+                    py-1
+                    xl:py-5">
                 <h5 class="text-2xl">MARK16 eTalks</h5>
-                <p class="text-sm">SNSF project 2018-2023</p>
+                <p class="text-sm mt-0 mb-1">SNSF project 2018-2023</p>
             </div>
         </div>
     </div>
