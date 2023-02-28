@@ -13,16 +13,15 @@
 
     $repository = 'git@gitlab.sib.swiss:mark16-vre-group/etalk.git';
 
-    $server_dev = $_ENV['DEPLOY_SERVER_DEV'] ?? null;
-    $server_prod = $_ENV['DEPLOY_SERVER_PROD'] ?? null;
+    $server_dev = getenv('DEPLOY_SERVER_DEV') ?? null;
+    $server_prod = getenv('DEPLOY_SERVER_PROD') ?? null;
 
-    $deploy_path_dev = $_ENV['DEPLOY_PATH_DEV'] ?? null;
-    $deploy_path_prod = $_ENV['DEPLOY_PATH_PROD'] ?? null;
+    $deploy_path_dev = getenv('DEPLOY_PATH_DEV') ?? null;
+    $deploy_path_prod = getenv('DEPLOY_PATH_PROD') ?? null;
     
     $app_dir = $server === 'prod' ?  $deploy_path_prod :  $deploy_path_dev ;
     
     $server = isset($server) ? $server : 'dev' ;
-
 @endsetup
 
 

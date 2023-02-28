@@ -3,10 +3,11 @@ stages:
   - testing
   - deploy
 
-image: lorisleiva/laravel-docker:8.1
+image: thecodingmachine/php:8.1-v4-cli
 
 # Variables
 variables:
+  PHP_EXTENSIONS: pdo_sqlite posix
   MYSQL_ROOT_PASSWORD: root
   MYSQL_USER: mysql_user
   MYSQL_PASSWORD: mysql_password
@@ -80,7 +81,7 @@ deploy_dev:
     - ssh-add <(echo "$DEV_SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - ./vendor/bin/envoy run deploy
+    - ./vendor/bin/envoy run deploy -vvv
   only:
     - dev
 
